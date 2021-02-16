@@ -11,7 +11,7 @@ class ServicesController1 extends Controller
 {
   public function services(){
     $services=Service::get();
-    Session::put('page','services');
+   Session::put('page','services');
     return view('admin.services.services')->with(compact('services'));
   }
 

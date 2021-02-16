@@ -85,7 +85,7 @@
 
                           <!--Centers -->
 
-        @if (Session::get('page') =="centres")
+        @if (Session::get('page') =="Centres")
         <?php $active ='active' ?>
         @else 
         <?php $active ='' ?>
@@ -98,17 +98,30 @@
     </li>
      <!--Services -->
     
-    @if (Session::get('page') =="services")
-    <?php $active ='active' ?>
-    @else 
-    <?php $active ='' ?>
-  @endif
-     <li class="nav-item">
-       <a href="{{url('admin/services')}}" class="nav-link" {{$active}}>
-<i class="nav-icon fas fa-th"></i>
-<p>Services</p>
-</a>
-     </li>
+     @if (Session::get('page') =="services")
+            <?php $active ='active' ?>
+            @else 
+            <?php $active ='' ?>
+          @endif
+        <li class="nav-item">
+          <a href="{{route('admin.services.index')}}" class="nav-link {{$active}}">
+            <i class="nav-icon fas fa-th"></i>
+            <p>Services</p>
+          </a>
+        </li>
+                  <!--uploads -->
+
+            @if (Session::get('page') =="uploads")
+            <?php $active ='active' ?>
+            @else 
+            <?php $active ='' ?>
+          @endif
+        <li class="nav-item">
+          <a href="{{route('admin.uploads.index')}}" class="nav-link {{$active}}">
+            <i class="nav-icon fas fa-th"></i>
+            <p>Upload</p>
+          </a>
+        </li>
 
         </ul>
       </nav>

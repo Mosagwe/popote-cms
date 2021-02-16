@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/admin/centres', \App\Http\Controllers\Admin\CentresController::class, ['as'=>'admin']);
+Route::resource('/admin/services', \App\Http\Controllers\Admin\ServicesController::class, ['as'=>'admin']);
+Route::resource('/admin/uploads', \App\Http\Controllers\Admin\UploadsController::class, ['as'=>'admin']);
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){
 
@@ -34,9 +36,5 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::post('check-current-pwd',[App\Http\Controllers\Admin\AdminController::class, 'chkCurrentPassword']);
         Route::post('update-current-pwd',[App\Http\Controllers\Admin\AdminController::class, 'updateCurrentPassword']);
         Route::match(['get','post'],'update-admin-details',[App\Http\Controllers\Admin\AdminController::class, 'updateAdminDetails']);
-
-        //services
-         Route::get('services',[App\Http\Controllers\Admin\ServicesController1::class, 'services']);
-
     });
 });

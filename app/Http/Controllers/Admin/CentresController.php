@@ -17,7 +17,7 @@ class CentresController extends Controller
     public function index()
     {
         $centres = Centre::get();
-        Session::put('page','centres');
+        Session::put('page','Centres');
         return view('admin.centres.centres')->with(compact('centres'));
     }
 
@@ -44,7 +44,9 @@ class CentresController extends Controller
         $centre->name= $request->name;
         $centre->status= $request->status;
         $centre->save();
-        return redirect('/admin/centres');
+        Session::flash('success_message','centre added successfully');
+        return redirect()->route('admin.centres.index');
+
         
     }
 
@@ -87,8 +89,7 @@ class CentresController extends Controller
         $centre->name= $request->name;
         $centre->status= $request->status;
         $centre->save();
-        return redirect()->route('admin.centres.index');
-
+    
     }
 
     /**

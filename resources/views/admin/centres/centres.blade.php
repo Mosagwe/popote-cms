@@ -23,6 +23,16 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+               
+            @if (Session::has('success_message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+          {{Session::get('success_message')}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            @endif
+
             <div class="card">
           </div>
             <!-- /.card -->
@@ -53,11 +63,11 @@
                     <td>{{$centre->code}}</td> 
                     <td>{{$centre->name}}</td>  
                     <td>@if ($centre->status==1)
-                      <p class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
-                          href="javascript:void(0)">Active</p>
+                      <a class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
+                          href="javascript:void(0)">Active</a>
                       @else 
-                      <p class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
-                          href="javascript:void(0)">InActive</p>
+                      <a class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
+                          href="javascript:void(0)">InActive</a>
                       @endif
                   </td>
                   <td class="text-centre">
@@ -72,7 +82,7 @@
                 onsubmit="return confirm('are you sure you want to delete centre?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger">Delete Centre</button>
+              <button class="btn btn-danger disabled">Delete Centre</button>
 
                </form>
               

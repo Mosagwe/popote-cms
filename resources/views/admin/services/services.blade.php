@@ -30,7 +30,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Services</h3>
-                <a href="{{url('/admin/add-edit-service')}}" class="btn btn-block btn-success" 
+                <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
                 style="max-width: 150px; float:right; display:inline-block;"> Add service</a>
               </div>
               <!-- /.card-header -->
@@ -40,7 +40,7 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    {{-- <th>Details</th> --}}
+                    <th>Details</th>
                     <th>Status</th>
                     <th>Action</th>
                     
@@ -50,12 +50,28 @@
                       @foreach ($services as $service)          
                   <tr>
                     <td>{{$service->id}}</td>
-                    <td>{{$service->servicename}}</td> 
-                    {{-- <td>{{ \Illuminate\Support\Str::limit($service->details,50)}}</td>   --}}
-                    <td>{{$service->status}}</td>
-                  <td class="text-centre">
-                    <a href="" class="btn btn-info">View services</a>
+                    <td>{{ \Illuminate\Support\Str::limit($service->servicename,30)}}</td>  
+                    <td>{{ \Illuminate\Support\Str::limit($service->details,50)}}</td>  
+                    <td>@if ($service->status==1)
+                      <a class="updateServiceStatus"  
+                          href="javascript:void(0)">Active</a>
+                      @else 
+                      <a class="updateserviceStatus" 
+                          href="javascript:void(0)">InActive</a>
+                      @endif
                   </td>
+                  <td class="text-centre">
+                    <a href="{{route('admin.services.edit',$service->id)}}" class="btn btn-warning">
+                      Edit service </a>                    
+               <form action="{{route('admin.services.destroy',$service->id)}}" method="POST" class="d-inline"
+                onsubmit="return confirm('are you sure you want to delete centre?!')">
+                 @method('delete')
+                 @csrf
+              <button class="btn btn-danger disabled">Delete Centre</button>
+
+               </form>
+              
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>

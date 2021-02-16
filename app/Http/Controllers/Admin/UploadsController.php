@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Service;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Session;
 
-class ServicesController extends Controller
+class UploadsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services=Service::get();
-        Session::put('page','services');
-        return view('admin.services.services')->with(compact('services'));
+      
+        Session::put('page','uploads');
+        return view('admin.uploads.uploads');
     }
 
     /**
@@ -28,7 +27,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin.services.add_service');
+        //
     }
 
     /**
@@ -37,14 +36,9 @@ class ServicesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Service $service)
+    public function store(Request $request)
     {
-        $service->servicename= $request->servicename;
-        $service->details= $request->details;
-        // $centre->mda= $request->mda;
-        $service->status= $request->status;
-        $service->save();
-        return redirect('/admin/services');
+        //
     }
 
     /**
@@ -64,10 +58,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-          $service=$service;
-        return view('admin.services.edit_service')->with(compact('service'));
+        //
     }
 
     /**
