@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Session;
+use App\Models\Mda;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
 
 class ServicesController extends Controller
 {
@@ -18,7 +19,7 @@ class ServicesController extends Controller
     {
         $services=Service::get();
         Session::put('page','services');
-        return view('admin.services.services')->with(compact('services'));
+        return view('admin.services.index')->with(compact('services'));
     }
 
     /**
@@ -28,7 +29,8 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin.services.add_service');
+        $mdas=Mda::all();
+        return view('admin.services.create')->withMdas($mdas);
     }
 
     /**
@@ -41,7 +43,8 @@ class ServicesController extends Controller
     {
         $service->servicename= $request->servicename;
         $service->details= $request->details;
-        // $centre->mda= $request->mda;
+        $service->mda_id= $request->mda_id;
+        $service->sbaservice_id=0;
         $service->status= $request->status;
         $service->save();
         return redirect('/admin/services');
@@ -67,7 +70,7 @@ class ServicesController extends Controller
     public function edit(Service $service)
     {
           $service=$service;
-        return view('admin.services.edit_service')->with(compact('service'));
+        return view('admin.services.edit')->with(compact('service'));
     }
 
     /**

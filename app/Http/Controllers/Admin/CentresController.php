@@ -18,7 +18,7 @@ class CentresController extends Controller
     {
         $centres = Centre::get();
         Session::put('page','Centres');
-        return view('admin.centres.centres')->with(compact('centres'));
+        return view('admin.centres.index')->with(compact('centres'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CentresController extends Controller
      */
     public function create()
     {
-        return view('admin.centres.add_centre');
+        return view('admin.centres.create');
     }
 
     /**
@@ -58,7 +58,8 @@ class CentresController extends Controller
      */
     public function show($id)
     {
-        //
+        $centre=Centre::findOrFail($id);
+        return view('admin.centres.show',compact('centre'));
     }
 
     /**
@@ -70,7 +71,7 @@ class CentresController extends Controller
     public function edit(Centre $centre)
     {
        $centre=$centre;
-       return view('admin.centres.edit_centre')->with(compact('centre'));
+       return view('admin.centres.edit')->with(compact('centre'));
     }
 
     /**

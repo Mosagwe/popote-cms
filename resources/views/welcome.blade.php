@@ -21,8 +21,8 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <p><b>Welcome  </b></p>
-    <p><b>Admin Login </b></p>
+    <p><b>Welcome to the Popote_UFE Admin panel  </b></p>
+    {{-- <p><b>Admin Login </b></p> --}}
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -36,7 +36,7 @@
           method="post" enctype="multipart/form-data">@csrf
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Add services form</h3>
+            <h3 class="card-title">Edit services form</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
               <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
@@ -49,26 +49,14 @@
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                     <label >Services Name</label>
-                    <input type="text" class="form-control" id="category_discount" name="category_discount" placeholder="Enter Service name">
+                    <input type="text" class="form-control" value="{{$service->servicename}}" id="servicename" name="servicename" placeholder="Enter Service name">
                   </div>
                   <div class="form-group">
                     <label >Services Details</label>
-                    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter Service details"></textarea>   
+                    <textarea class="form-control" name="details"  id="details" rows="3" {{$service->details}} placeholder="Enter Service details"></textarea>   
                   </div>                
               </div>
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>select Agency</label>
-                  <select name="parent_id" class="form-control select2" style="width: 100%;">
-                    <option value="0" >KRA</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Status</label>
-                    <textarea class="form-control" rows="3" name="meta_title" id="meta_title " placeholder="Enter service status"></textarea>
-                  </div>
-              </div>
+            
             </div> 
           </div>
     

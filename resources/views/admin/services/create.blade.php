@@ -44,29 +44,31 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-          
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="form-group">
-                    <label >Services Name</label>
-                    <input type="text" class="form-control" value="{{$service->servicename}}" id="servicename" name="servicename" placeholder="Enter Service name">
-                  </div>
+                  <label>select Agency</label>
+                  <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;">
+                    @foreach ($mdas as $mda)
+                    <option value="{{$mda->id}}" >{{$mda->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+               
                   <div class="form-group">
                     <label >Services Details</label>
-                    <textarea class="form-control" name="details"  id="details" rows="3" value="{{$service->details}}" placeholder="Enter Service details"></textarea>   
+                    <textarea class="form-control" name="details" id="details" rows="3" placeholder="Enter Service details"></textarea>   
                   </div>                
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label>select Agency</label>
-                  <select name="mda" class="form-control select2" style="width: 100%;">
-                    <option value="0" >KRA</option>
-                  </select>
+                  <label >Services Name</label>
+                  <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name">
                 </div>
 
                 <div class="form-group">
                     <label>Status</label>
-                    <textarea class="form-control" rows="3" name="status" id="status" value="{{$service->status}}" placeholder="Enter service status"></textarea>
+                    <textarea class="form-control" rows="3" name="status" id="status " placeholder="Enter service status"></textarea>
                   </div>
               </div>
             </div> 
