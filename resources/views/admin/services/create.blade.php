@@ -67,8 +67,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Status</label>
-                    <textarea class="form-control" rows="3" name="status" id="status " placeholder="Enter service status"></textarea>
+                    <label>Service Cost</label>
+                    <textarea class="form-control" rows="3" name="cost" id="cost " placeholder="Enter service cost"></textarea>
                   </div>
               </div>
             </div> 

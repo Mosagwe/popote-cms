@@ -53,7 +53,7 @@
                     <td>{{$service->servicename}}</td>  
                 
                   <td class="text-centre">
-                    <a href="{{route('admin.centres.show',$centre->id)}}" class="btn btn-info">change status</a> <a href="{{route('admin.centres.edit',$centre->id)}}" class="btn btn-warning">
+                    <a href="{{route('admin.centres.show',$centre->id)}}" class="btn btn-info">change status</a> <a href="{{route('admin.services.edit',$service->id)}}" class="btn btn-warning">
                       Edit service </a>
                       {{-- <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()"  class="btn btn-danger disabled">
                         Delete centre </a>

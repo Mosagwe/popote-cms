@@ -53,7 +53,11 @@
                   </div>
                   <div class="form-group">
                     <label >Services Details</label>
-                    <textarea class="form-control" name="details"  id="details" rows="3" {{$service->details}} placeholder="Enter Service details"></textarea>   
+                    <textarea class="form-control" name="details"  id="details" rows="3"  placeholder="Enter Service details">{{$service->details}}</textarea>   
+                  </div>
+                  <div class="form-group">
+                    <label >Services cost</label>
+                    <input type="text" class="form-control" value="{{$service->cost}}" id="servicename" name="servicename" placeholder="Enter Service name">
                   </div>                
               </div>
             

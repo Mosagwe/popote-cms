@@ -109,6 +109,20 @@
             <p>Services</p>
           </a>
         </li>
+
+                         <!--uploads -->
+
+                         @if (Session::get('page') =="agencies")
+                         <?php $active ='active' ?>
+                         @else 
+                         <?php $active ='' ?>
+                       @endif
+                     <li class="nav-item">
+                       <a href="{{route('admin.agencies.index')}}" class="nav-link {{$active}}">
+                         <i class="nav-icon fas fa-th"></i>
+                         <p>Agencies</p>
+                       </a>
+                     </li>
                   <!--uploads -->
 
             @if (Session::get('page') =="uploads")
@@ -122,7 +136,7 @@
             <p>Upload</p>
           </a>
         </li>
-
+     
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

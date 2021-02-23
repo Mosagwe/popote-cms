@@ -18,7 +18,7 @@ class AdminController extends Controller
 // echo "<pre>"; print_r( Auth::guard('admin')->user());die;
 Session::put('page','settings');
         $adminDetails = Admin::Where('email', Auth::guard('admin')->user()->email)->first();
-        return view("admin.admin_settings")->with(compact("adminDetails"));
+        return view("admin.admin_auth.admin_settings")->with(compact("adminDetails"));
     }
     public function dashboard()
     {
@@ -125,7 +125,7 @@ if($request->hasFile('admin_image')){
         $extension = $image_tmp->getClientOriginalExtension();
         // Generate New Image Name
         $imageName = rand(111,99999).'.'.$extension;
-        $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+        $imagePath = 'images/admin_images/'.$imageName;
         // Upload the Image
         Image::make($image_tmp)->resize(300,400)->save($imagePath);
     }
@@ -140,6 +140,6 @@ if($request->hasFile('admin_image')){
                 ->update(['name' => $data['admin_name'], 'mobile' => $data['admin_mobile'], 'image' => $imageName]);
             Session::flash('success_message', 'Admin details updated successfully !');
         }
-        return view('admin.update_admin_details')->with(compact('adminDetails'));
+        return view('admin.admin_auth.update_admin_details')->with(compact('adminDetails'));
     }
 }

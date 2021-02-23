@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/admin/centres', \App\Http\Controllers\Admin\CentresController::class, ['as'=>'admin']);
 Route::resource('/admin/services', \App\Http\Controllers\Admin\ServicesController::class, ['as'=>'admin']);
 Route::resource('/admin/uploads', \App\Http\Controllers\Admin\UploadsController::class, ['as'=>'admin']);
+Route::resource('/admin/agencies', \App\Http\Controllers\Admin\AgenciesController::class, ['as'=>'admin']);
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){
 

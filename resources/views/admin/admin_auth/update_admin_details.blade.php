@@ -88,10 +88,10 @@
                      
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Admin Image</label>
+                        <label >Admin Image</label>
                         <input type="file" class="form-control" id="admin_image" name="admin_image">
                         @if (!empty(Auth::guard('admin')->user()->image))
-                        <a target="_blank" href="{{url('images/admin_images/admin_photos/'.Auth::guard('admin')->user()->image)}}">View Image</a>
+                        <a target="_blank" href="{{url('images/admin_images/admin_photos/'.Auth::guard('admin')->user()->image)}}">View current Image</a>
                         <input type="hidden" name="current_admin_image" 
                         value="{{Auth::guard('admin')->user()->image}}">
                             

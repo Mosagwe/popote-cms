@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Centre;
+use App\Models\Agency;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use Image;
 
-class CentresController extends Controller
+class AgenciesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class CentresController extends Controller
      */
     public function index()
     {
-        $centres = Centre::get();
-        Session::put('page','Centres');
-        return view('admin.centres.index')->with(compact('centres'));
+        $agencies = Agency::get();
+        Session::put('page','agencies');
+        return view('admin.agencies.index')->with(compact('agencies'));
     }
 
     /**
@@ -28,7 +29,7 @@ class CentresController extends Controller
      */
     public function create()
     {
-        return view('admin.centres.create');
+        return view('admin.agencies.create');
     }
 
     /**
@@ -37,17 +38,28 @@ class CentresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Centre $centre)
+    public function store(Request $request, Agency $agency)
     {
-        $centre->id= $request->id;
-        $centre->code= $request->code;
-        $centre->name= $request->name;
-        $centre->status= $request->status;
-        $centre->save();
-        Session::flash('success_message','centre added successfully');
-        return redirect()->route('admin.centres.index');
 
-        
+        if($request->hasFile('agency_logo')){
+            $image_tmp = $request->file('agency_logo');
+            if($image_tmp->isValid()){
+                // Get Image Extension
+                $extension = $image_tmp->getClientOriginalExtension();
+                // Generate New Image Name
+                $imageName = rand(111,99999).'.'.$extension;
+                $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+                // Upload the Image
+                Image::make($image_tmp)->resize(300,400)->save($imagePath);
+            }
+        }else{
+            $imageName = "";
+        }
+        $agency->name=$request->name;
+        $agency->code=$request->code;
+        $agency->mda_logo=$imageName;
+        $agency->save();
+return redirect()->route('admin.agencies.index');
     }
 
     /**
@@ -58,8 +70,7 @@ class CentresController extends Controller
      */
     public function show($id)
     {
-        $centre=Centre::findOrFail($id);
-        return view('admin.centres.show',compact('centre'));
+        //
     }
 
     /**
@@ -70,8 +81,9 @@ class CentresController extends Controller
      */
     public function edit($id)
     {
-       $centre= Centre::find($id);
-       return view('admin.centres.edit')->with(compact('centre'));
+        $agency= Agency::find($id);
+        // echo $agency;
+        return view('admin.agencies.edit')->with(compact('agency'));
     }
 
     /**
@@ -83,14 +95,7 @@ class CentresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $centre= Centre::find($id);
-
-        $centre->id= $request->id;
-        $centre->code= $request->code;
-        $centre->name= $request->name;
-        $centre->status= $request->status;
-        $centre->save();
-    
+        
     }
 
     /**
@@ -101,7 +106,6 @@ class CentresController extends Controller
      */
     public function destroy($id)
     {
-        Centre::destroy($id);
-        return redirect()->route('admin.centres.index');
+        //
     }
 }
