@@ -33,7 +33,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Centres services</h3>
-                <a href="{{route('admin.centres.create')}}" class="btn btn-block btn-success" 
+                <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
                 style="max-width: 150px; float:right; display:inline-block;"> Add sertvice to Centre</a>
               </div>
               <!-- /.card-header -->

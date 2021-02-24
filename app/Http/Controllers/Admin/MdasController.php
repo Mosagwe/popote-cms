@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Agency;
+use App\Models\Mda;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Image;
 
-class AgenciesController extends Controller
+class MdasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,10 @@ class AgenciesController extends Controller
      */
     public function index()
     {
-        $agencies = Agency::get();
+        $mdas = Mda::get();
+     
         Session::put('page','agencies');
-        return view('admin.agencies.index')->with(compact('agencies'));
+        return view('admin.agencies.index')->with(compact('mdas'));
     }
 
     /**
@@ -38,11 +39,11 @@ class AgenciesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Agency $agency)
+    public function store(Request $request, Mda $mda)
     {
-
-        if($request->hasFile('agency_logo')){
-            $image_tmp = $request->file('agency_logo');
+        
+        if($request->hasFile('mda_logo')){
+            $image_tmp = $request->file('mda_logo');
             if($image_tmp->isValid()){
                 // Get Image Extension
                 $extension = $image_tmp->getClientOriginalExtension();
@@ -55,10 +56,10 @@ class AgenciesController extends Controller
         }else{
             $imageName = "";
         }
-        $agency->name=$request->name;
-        $agency->code=$request->code;
-        $agency->mda_logo=$imageName;
-        $agency->save();
+        $mda->name=$request->name;
+        $mda->code=$request->code;
+        $mda->mda_logo=$imageName;
+        $mda->save();
 return redirect()->route('admin.agencies.index');
     }
 
@@ -70,7 +71,8 @@ return redirect()->route('admin.agencies.index');
      */
     public function show($id)
     {
-        //
+        $mda=Mda::find($id);
+        return view('admin.agencies.show',compact('mda'));
     }
 
     /**
@@ -81,9 +83,9 @@ return redirect()->route('admin.agencies.index');
      */
     public function edit($id)
     {
-        $agency= Agency::find($id);
-        // echo $agency;
-        return view('admin.agencies.edit')->with(compact('agency'));
+        $mda= Mda::find($id);
+      
+        return view('admin.agencies.edit')->with(compact('mda'));
     }
 
     /**
@@ -95,7 +97,7 @@ return redirect()->route('admin.agencies.index');
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
@@ -106,6 +108,7 @@ return redirect()->route('admin.agencies.index');
      */
     public function destroy($id)
     {
-        //
+        Mda::destroy($id);
+        return redirect()->route('admin.mdas.index');
     }
 }

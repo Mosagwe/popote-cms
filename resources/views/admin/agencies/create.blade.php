@@ -32,7 +32,7 @@
             </ul>
             </div>               
             @endif
-          <form name="categoryForm" id="categoryForm" action="{{route('admin.agencies.store')}}" 
+          <form name="categoryForm" id="categoryForm" action="{{route('admin.mdas.store')}}" 
           method="post" enctype="multipart/form-data">@csrf
         <div class="card card-default">
           <div class="card-header" >

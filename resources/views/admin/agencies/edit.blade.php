@@ -32,8 +32,9 @@
             </ul>
             </div>               
             @endif
-          <form name="categoryForm" id="categoryForm" action="{{route('admin.services.store')}}" 
+          <form name="categoryForm" id="categoryForm" action="{{route('admin.mdas.update',$mda->id)}}" 
           method="post" enctype="multipart/form-data">@csrf
+          @method('put')
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">Edit Agency form</h3>
@@ -49,20 +50,20 @@
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                     <label >Agency Name</label>
-                    <input type="text" class="form-control" value="{{$agency->name}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                    <input type="text" class="form-control" value="{{$mda->name}}" id="servicename" name="servicename" placeholder="Enter Service name">
                   </div>
                   
                   <div class="form-group">
                     <label >Agency code</label>
-                    <input type="text" class="form-control" value="{{$agency->code}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                    <input type="text" class="form-control" value="{{$mda->code}}" id="servicename" name="servicename" placeholder="Enter Service name">
                   </div>                
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label >AGENCY lOGO</label>
                   <input type="file" class="form-control" id="mda_logo" name="mda_logo" value="">
-                  @if (!empty($agency->mda_logo))
-                  <a target="_blank" href="{{url('images/admin_images/admin_photos/', $agency->mda_logo)}}">{{$agency->mda_logo}}</a>
+                  @if (!empty($mda->mda_logo))
+                  <a target="_blank" href="{{url('images/admin_images/admin_photos/', $mda->mda_logo)}}">{{$mda->mda_logo}}</a>
                   @else
              <p style="color: red">No added Agency logo</p>                            
                   @endif

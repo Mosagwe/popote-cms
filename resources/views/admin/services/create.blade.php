@@ -47,10 +47,10 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label>select Agency</label>
-                  <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;">
-                    @foreach ($mdas as $mda)
-                    <option value="{{$mda->id}}" >{{$mda->name}}</option>
+                  <label>Select Huduma Centre</label>
+                  <select name="centre_id" name="centre_id" class="form-control select2" style="width: 100%;">
+                    @foreach ($centres as $centre)
+                    <option value="{{$centre->id}}" >{{$centre->name}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -58,19 +58,35 @@
                   <div class="form-group">
                     <label >Services Details</label>
                     <textarea class="form-control" name="details" id="details" rows="3" placeholder="Enter Service details"></textarea>   
-                  </div>                
+                  </div>  
+                  <div class="form-group">
+                    <label >Services Name</label>
+                    <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name">
+                  </div>              
               </div>
               <div class="col-12 col-sm-6">
+              
                 <div class="form-group">
-                  <label >Services Name</label>
-                  <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name">
+                  <label>select Agency</label>
+                  <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;">
+                    @foreach ($mdas as $mda)
+                    <option value="{{$mda->id}}" >{{$mda->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
 
                 <div class="form-group">
                     <label>Service Cost</label>
                     <textarea class="form-control" rows="3" name="cost" id="cost " placeholder="Enter service cost"></textarea>
                   </div>
+
+                  <div class="form-group">
+                    <label >Services timeline</label>
+                    <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name">
+                  </div> 
               </div>
+            
+          </div>   
             </div> 
           </div>
     

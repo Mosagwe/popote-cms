@@ -58,7 +58,11 @@
                   <div class="form-group">
                     <label >Services cost</label>
                     <input type="text" class="form-control" value="{{$service->cost}}" id="servicename" name="servicename" placeholder="Enter Service name">
-                  </div>                
+                  </div>   
+                  <div class="form-group">
+                    <label >Services timeline</label>
+                    <input type="text" class="form-control" value="{{$service->timeline}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                  </div>               
               </div>
             
             </div> 
