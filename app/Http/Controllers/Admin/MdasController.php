@@ -60,7 +60,7 @@ class MdasController extends Controller
         $mda->code=$request->code;
         $mda->mda_logo=$imageName;
         $mda->save();
-return redirect()->route('admin.agencies.index');
+return redirect()->route('admin.mdas.index');
     }
 
     /**

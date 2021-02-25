@@ -104,4 +104,17 @@ class CentresController extends Controller
         Centre::destroy($id);
         return redirect()->route('admin.centres.index');
     }
+
+    public function updateCentreStatus(Request $request){
+        if($request->ajax()){
+            $data= $request->all();
+            if($data['status']=='Active'){
+                $status=0;
+            }else{
+                $status=1;
+            }
+            Centre::where('id',$data['centre_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'centre_id'=>$data['centre_id']]);
+        }
+    }
 }

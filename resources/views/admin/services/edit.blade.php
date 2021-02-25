@@ -1,4 +1,136 @@
-@extends('layouts.admin_layout.admin_layout')
+
+  
+  @extends('layouts.admin_layout.admin_layout')
+  @section('content')
+        
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Services</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="{{url('/admin/dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item active">services</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Edit services form</h3>
+                </div>
+                  <!-- /.card-header -->
+
+                @if (Session::has('error_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+              {{Session::get('error_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+
+                @if (Session::has('success_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+              {{Session::get('success_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+
+                @if ($errors->any())
+                <div class="alert alert-danger" style="margin-top: 10px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+              
+                <!-- form start -->
+                <form role="form" method="post"  name="categoryForm" action="{{route('admin.services.store')}}" 
+                id="categoryForm" enctype="multipart/form-data">@csrf
+                  <div class="card-body">
+                   
+                    <div class="form-group">
+                      <label>Select Huduma Centre</label>
+                      <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;">
+                        @foreach ($centres as $centre)
+                        <option value="{{$centre->id}}" >{{$centre->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>select agency</label>
+                      <select name="mda_id" id="mda_id" class="form-control select2" style="width: 100%;">
+                        @foreach ($mdas as $mda)
+                        <option value="{{$mda->id}}" >{{$mda->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label >Services Name</label>
+                      <input type="text" class="form-control" value="{{$service->servicename}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                    </div>
+                    <div class="form-group">
+                      <label >Services Details</label>
+                      <textarea class="form-control" name="details"  id="details" rows="3"  placeholder="Enter Service details">{{$service->details}}</textarea>   
+                    </div>
+                    <div class="form-group">
+                      <label >Services cost</label>
+                      <input type="text" class="form-control" value="{{$service->cost}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                    </div>   
+                    <div class="form-group">
+                      <label >Services timeline</label>
+                      <input type="text" class="form-control" value="{{$service->timeline}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                    </div>               
+                </div>
+                   
+                     
+                  </div>
+                  <!-- /.card-body -->
+  
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card -->
+            </div>
+           
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+  @endsection
+  
+
+
+
+
+
+{{-- @extends('layouts.admin_layout.admin_layout')
 @section('content')
 
 <div class="content-wrapper">
@@ -35,7 +167,7 @@
           <form name="categoryForm" id="categoryForm" action="{{route('admin.services.store')}}" 
           method="post" enctype="multipart/form-data">@csrf
         <div class="card card-default">
-          <div class="card-header">
+          <div class="card-header" style="background: blue">
             <h3 class="card-title">Edit services form</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -46,7 +178,23 @@
           <div class="card-body">
           
             <div class="row">
-              <div class="col-12 col-sm-6">
+              <div class="col-6 col-sm-6">
+                <div class="form-group">
+                  <label>Select Huduma Centre</label>
+                  <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;">
+                    @foreach ($centres as $centre)
+                    <option value="{{$centre->id}}" >{{$centre->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>select agency</label>
+                  <select name="mda_id" id="mda_id" class="form-control select2" style="width: 100%;">
+                    @foreach ($mdas as $mda)
+                    <option value="{{$mda->id}}" >{{$mda->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
                 <div class="form-group">
                     <label >Services Name</label>
                     <input type="text" class="form-control" value="{{$service->servicename}}" id="servicename" name="servicename" placeholder="Enter Service name">
@@ -80,4 +228,4 @@
   </div>
 
 
-@endsection
+@endsection --}}

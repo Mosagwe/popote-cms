@@ -32,8 +32,8 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        $mdas=Mda::all();
-        $centres=Centre::all();
+      $mdas=Mda::all();
+        $centres=Centre::all();  
         return view('admin.services.create',compact('centres','mdas'));
     }
 
@@ -49,9 +49,11 @@ class ServicesController extends Controller
         $service->details= $request->details;
         $service->mda_id= $request->mda_id;
         $service->sbaservice_id=0;
-       // $service->status= $request->status;
         $service->save();
-        return redirect('/admin/services');
+        $centre= Centre::find($request->centre_id);
+        $service->centres()->attach($centre);
+
+       return redirect('/admin/services');
     }
 
     /**
@@ -74,7 +76,10 @@ class ServicesController extends Controller
     public function edit(Service $service)
     {
           $service=$service;
-        return view('admin.services.edit')->with(compact('service'));
+          $mdas=Mda::all();
+        $centres=Centre::all();
+        return view('admin.services.edit',compact('mdas','centres','service'));
+      
     }
 
     /**
@@ -86,7 +91,14 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $service= Service::find($id);
+        $service->servicename= $request->servicename;
+        $service->details= $request->details;
+        $service->mda_id= $request->mda_id;
+        $service->sbaservice_id=0;
+        $service->save();
+        return redirect('/admin/services');
     }
 
     /**

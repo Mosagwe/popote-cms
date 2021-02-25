@@ -12,4 +12,9 @@ class Service extends Model
     {
         return $this->belongsTo('App\Models\Mda');
     }
+
+    public function centres()
+    {
+        return $this->belongsToMany('App\Models\Centre', 'service_center');
+    }
 }
