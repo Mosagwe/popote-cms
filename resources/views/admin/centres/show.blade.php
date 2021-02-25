@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Centres services</h1>
+            <h1>Centre services</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Centres services</li>
+              <li class="breadcrumb-item active">Centre services</li>
             </ol>
           </div>
         </div>
@@ -32,9 +32,9 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Centres services</h3>
+                <h3 class="card-title"><b>{{$centre->name}} Services</b></h3>
                 <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
-                style="max-width: 150px; float:right; display:inline-block;"> Add sertvice to Centre</a>
+                style="max-width: 150px; float:right; display:inline-block;"> Add service to Centre</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -89,79 +89,3 @@
 @endsection
 
 
-{{-- 
-@extends('layouts.admin_layout.admin_layout')
-@section('content')
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="section-title" style="align-items: center">
-            <div class="row">
-                <h2 style="color: #721c24">{{ $centre->name }} GOVERNMENT SERVICES</h2> 
-            </div>      
-        </div>
-           <P></P>
-            <p></p>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-
-            <div class="row">
-                @foreach($centre->services as $service)
-                    <div class="col-lg-4 col-md-4" style="padding-bottom: 4px">
-                        <div class="icon-box">
-                            <i class="fa fa-address-book" aria-hidden="true"></i>
-                           
-                            <h3><a href="{{route(admin.services.show),$service->id}}">{{ $service->servicename }}</a></h3>
-                        </div>
-                    </div>
-                    <p></p>
-                @endforeach
-            </div>
-            <p></p>
-
-
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-
-
-@endsection
-
-
- 
- 
-{{-- 
-                <div class="section-title">
-                    <h2>Government Services</h2>
-                    <p>Get access to a myriad of Government Services and Information.</p>
-                </div>
-
-
-                    <div class="row">
-
-                        <h4 style="color: #721c24">{{ $centre->name }}</h4>
-                    </div>
-                    <p></p>
-                    <div class="row">
-                        @foreach($centre->services as $service)
-                            <div class="col-lg-4 col-md-4" style="padding-bottom: 4px">
-                                <div class="icon-box">
-                                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                                   
-                                    <h3><a href="">{{ $service->servicename }}</a></h3>
-                                </div>
-                            </div>
-                            <p></p>
-                        @endforeach
-                    </div>
-                    <p></p>
-
-            
-     --}}
-
- --}}

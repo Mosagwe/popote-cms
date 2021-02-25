@@ -33,7 +33,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Update Admin Details</h3>
+                  <h3 class="card-title">Create Service</h3>
                 </div>
                   <!-- /.card-header -->
 
@@ -67,7 +67,7 @@
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
                           <label>Select Huduma Centre</label>
-                          <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;">
+                          <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;" required>
                             @foreach ($centres as $centre)
                             <option value="{{$centre->id}}" >{{$centre->name}}</option>
                             @endforeach
@@ -75,11 +75,11 @@
                         </div>
                         <div class="form-group">
                           <label >Services Name</label>
-                          <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name">
+                          <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name" required>
                         </div> 
                           <div class="form-group">
                             <label >Services Details</label>
-                            <textarea class="form-control" name="details" id="details" rows="3" placeholder="Enter Service details"></textarea>   
+                            <textarea class="form-control" name="details" id="details" rows="3" placeholder="Enter Service details" required></textarea>   
                           </div>  
                                    
                       </div>
@@ -87,7 +87,7 @@
                       
                         <div class="form-group">
                           <label>select Agency</label>
-                          <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;">
+                          <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;" required>
                             @foreach ($mdas as $mda)
                             <option value="{{$mda->id}}" >{{$mda->name}}</option>
                             @endforeach
@@ -96,12 +96,12 @@
         
                         <div class="form-group">
                           <label >Services timeline</label>
-                          <input type="text" class="form-control" id="timeline" name="timeline" placeholder="Enter Service name">
+                          <input type="text" class="form-control" id="timeline" name="timeline" placeholder="Enter Service name" required>
                         </div> 
         
                         <div class="form-group">
                             <label>Service Cost</label>
-                            <textarea class="form-control" rows="3" name="cost" id="cost " placeholder="Enter service cost"></textarea>
+                            <textarea class="form-control" rows="3" name="cost" id="cost " placeholder="Enter service cost" required></textarea>
                           </div>
         
                         

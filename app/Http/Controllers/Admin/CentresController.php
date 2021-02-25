@@ -39,10 +39,21 @@ class CentresController extends Controller
      */
     public function store(Request $request,Centre $centre)
     {
-        $centre->id= $request->id;
+$rules=[
+'name'=>'required|regex:/^[\pL\s\-]+$/u',
+'code'=>'required|regex:/^[a-zA-Z0-9_-]*$/',
+];
+$custommessage=[
+'name.requires'=>'Centre name is required',
+'name.alpha'=>'valid centre name is required',
+'code.required'=>'centre code  is required',
+'code.alpha'=>'A valid centre code is required'
+];
+$this-> validate($request,$rules,$custommessage);
+        
         $centre->code= $request->code;
         $centre->name= $request->name;
-        $centre->status= $request->status;
+        $centre->status=1;
         $centre->save();
         Session::flash('success_message','centre added successfully');
         return redirect()->route('admin.centres.index');
@@ -85,11 +96,24 @@ class CentresController extends Controller
     {
         $centre= Centre::find($id);
 
-        $centre->id= $request->id;
-        $centre->code= $request->code;
-        $centre->name= $request->name;
-        $centre->status= $request->status;
+        $rules=[
+            'name'=>'required|regex:/^[\pL\s\-]+$/u',
+            'code'=>'required|regex:/^[a-zA-Z0-9_-]*$/',
+            ];
+            $custommessage=[
+            'name.requires'=>'Centre name is required',
+            'name.alpha'=>'valid centre name is required',
+            'code.required'=>'centre code  is required',
+            'code.alpha'=>'A valid centre code is required'
+            ];
+            $this-> validate($request,$rules,$custommessage);
+    
+            $centre->name= $request->name;
+            $centre->code= $request->code;
+        
+    
         $centre->save();
+        return redirect()->route('admin.centres.index');
     
     }
 

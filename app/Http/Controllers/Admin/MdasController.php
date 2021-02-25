@@ -97,7 +97,30 @@ return redirect()->route('admin.mdas.index');
      */
     public function update(Request $request, $id)
     {
-        //
+      
+
+        if($request->hasFile('mda_logo')){
+            $image_tmp = $request->file('mda_logo');
+            if($image_tmp->isValid()){
+                // Get Image Extension
+                $extension = $image_tmp->getClientOriginalExtension();
+                // Generate New Image Name
+                $imageName = rand(111,99999).'.'.$extension;
+                $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+                // Upload the Image
+                Image::make($image_tmp)->resize(300,400)->save($imagePath);
+            }
+        }else{
+            $imageName = "";
+        }
+        $mda= Mda::find($id);
+
+        $mda->name=$request->name;
+        $mda->code=$request->code;
+        $mda->mda_logo=$imageName;
+        $mda->save();
+return redirect()->route('admin.mdas.index');
+
     }
 
     /**

@@ -45,6 +45,17 @@ class ServicesController extends Controller
      */
     public function store(Request $request, Service $service)
     {
+        $rules=[
+            'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
+            'detail'=>'required|regex:/^[a-zA-Z0-9_-]*$/',
+            ];
+            $custommessage=[
+            'servicename.requires'=>'Centre name is required',
+            'servicename.alpha'=>'valid centre name is required',
+            'details.required'=>'centre code  is required',
+            'details.alpha'=>'A valid centre code is required'
+            ];
+            $this-> validate($request,$rules,$custommessage);
         $service->servicename= $request->servicename;
         $service->details= $request->details;
         $service->mda_id= $request->mda_id;

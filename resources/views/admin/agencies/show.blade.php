@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Centres services</h1>
+            <h1>Agency services</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Centres services</li>
+              <li class="breadcrumb-item active">Agency services</li>
             </ol>
           </div>
         </div>
@@ -32,7 +32,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Centres services</h3>
+                <h3 class="card-title">Agency services</h3>
                 <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
                 style="max-width: 150px; float:right; display:inline-block;"> Add sertvice to Agency</a>
               </div>
