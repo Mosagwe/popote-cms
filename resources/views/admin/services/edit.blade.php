@@ -65,11 +65,12 @@
             @endif
               
                 <!-- form start -->
-                <form role="form" method="post"  name="categoryForm" action="{{route('admin.services.store')}}" 
+                <form role="form" method="post"  name="categoryForm" action="{{route('admin.services.update',$service->id)}}" 
                 id="categoryForm" enctype="multipart/form-data">@csrf
+                @method('put')
                   <div class="card-body">
                    
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label>Select Huduma Centre</label>
                       <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;">
                         @foreach ($centres as $centre)
@@ -84,7 +85,7 @@
                         <option value="{{$mda->id}}" >{{$mda->name}}</option>
                         @endforeach
                       </select>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                       <label >Services Name</label>

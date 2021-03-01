@@ -45,17 +45,18 @@ class ServicesController extends Controller
      */
     public function store(Request $request, Service $service)
     {
-        $rules=[
-            'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
-            'detail'=>'required|regex:/^[a-zA-Z0-9_-]*$/',
-            ];
-            $custommessage=[
-            'servicename.requires'=>'Centre name is required',
-            'servicename.alpha'=>'valid centre name is required',
-            'details.required'=>'centre code  is required',
-            'details.alpha'=>'A valid centre code is required'
-            ];
-            $this-> validate($request,$rules,$custommessage);
+        // $rules=[
+        //     'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'details'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     ];
+        //     $custommessage=[
+        //     'servicename.requires'=>'Centre name is required',
+        //     'servicename.alpha'=>'valid centre name is required',
+        //     'details.required'=>'service details  is required',
+        //     'details.alpha'=>'A valid centre code is required'
+        //     ];
+        //     $this-> validate($request,$rules,$custommessage);
+
         $service->servicename= $request->servicename;
         $service->details= $request->details;
         $service->mda_id= $request->mda_id;
@@ -63,7 +64,7 @@ class ServicesController extends Controller
         $service->save();
         $centre= Centre::find($request->centre_id);
         $service->centres()->attach($centre);
-
+Session::flash('success_message', 'service added successfully');
        return redirect('/admin/services');
     }
 
@@ -87,9 +88,9 @@ class ServicesController extends Controller
     public function edit(Service $service)
     {
           $service=$service;
-          $mdas=Mda::all();
-        $centres=Centre::all();
-        return view('admin.services.edit',compact('mdas','centres','service'));
+        //   $mdas=Mda::all();
+        // $centres=Centre::all();
+        return view('admin.services.edit',compact('service'));
       
     }
 
@@ -106,9 +107,10 @@ class ServicesController extends Controller
         $service= Service::find($id);
         $service->servicename= $request->servicename;
         $service->details= $request->details;
-        $service->mda_id= $request->mda_id;
-        $service->sbaservice_id=0;
+        // $service->mda_id= $request->mda_id;
+        // $service->sbaservice_id=0;
         $service->save();
+        Session::flash('success_message', 'service edited successfully');
         return redirect('/admin/services');
     }
 
@@ -120,7 +122,8 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Service::destroy($id);
+        return redirect()->route('admin.services.index');
     }
     public function all()
     {
