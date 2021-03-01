@@ -51,7 +51,7 @@ Session::put('page','settings');
                 return redirect()->back();
             }
         }
-        return view('admin.admin_login');
+        return view('admin.admin_auth.admin_login');
     }
 
     public function logout()

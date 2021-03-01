@@ -72,24 +72,15 @@
                     <div class="row">
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label >Centre Id</label>
-                            <input type="text" class="form-control" id="id" name="id" value="{{$centre->id}}" placeholder="Enter Category Discount">
-                          </div>
+                          <label >Centre Name</label>
+                          <input type="text" class="form-control" id="name" name="name" value="{{$centre->name}}" placeholder="Enter Category Discount">
+                        </div>
                           <div class="form-group">
                             <label >Centre code</label>
                             <input type="text" class="form-control" name="code" id="code" value="{{$centre->code}}" rows="3" placeholder="Enter category description"> 
                           </div>                
                       </div>
-                      <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                            <label >Centre Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{$centre->name}}" placeholder="Enter Category Discount">
-                          </div>
-                          <div class="form-group">
-                            <label >status</label>
-                            <input type="text" class="form-control" name="status" id="status" value="{{$centre->status}}" rows="3" placeholder="Enter category description"> 
-                          </div>                
-                      </div>    
+                     
                   </div>
                      
                   </div>

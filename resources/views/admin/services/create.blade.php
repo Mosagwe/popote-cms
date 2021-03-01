@@ -96,7 +96,7 @@
         
                         <div class="form-group">
                           <label >Services timeline</label>
-                          <input type="text" class="form-control" id="timeline" name="timeline" placeholder="Enter Service name" required>
+                          <input type="text" class="form-control" id="timeline" name="timeline" placeholder="Enter Service timeline" required>
                         </div> 
         
                         <div class="form-group">

@@ -82,7 +82,7 @@
                 onsubmit="return confirm('are you sure you want to delete centre?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger disabled">Delete Centre</button>
+              <button class="btn btn-danger ">Delete Centre</button>
 
                </form>
               

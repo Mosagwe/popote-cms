@@ -97,11 +97,11 @@
                     </div>
                     <div class="form-group">
                       <label >Services cost</label>
-                      <input type="text" class="form-control" value="{{$service->cost}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                      <input type="text" class="form-control" value="{{$service->cost}}" id="cost" name="cost" placeholder="Enter Service cost">
                     </div>   
                     <div class="form-group">
                       <label >Services timeline</label>
-                      <input type="text" class="form-control" value="{{$service->timeline}}" id="servicename" name="servicename" placeholder="Enter Service name">
+                      <input type="text" class="form-control" value="{{$service->timeline}}" id="timeline" name="timeline" placeholder="Enter Service timeline">
                     </div>               
                 </div>
                    

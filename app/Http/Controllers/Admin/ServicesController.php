@@ -60,6 +60,8 @@ class ServicesController extends Controller
         $service->servicename= $request->servicename;
         $service->details= $request->details;
         $service->mda_id= $request->mda_id;
+        $service->cost =$request->cost;
+        $service->timeline=$request->timeline;
         $service->sbaservice_id=0;
         $service->save();
         $centre= Centre::find($request->centre_id);
@@ -107,6 +109,8 @@ Session::flash('success_message', 'service added successfully');
         $service= Service::find($id);
         $service->servicename= $request->servicename;
         $service->details= $request->details;
+        $service->cost= $request->cost;
+        $service->timeline= $request->timeline;
         // $service->mda_id= $request->mda_id;
         // $service->sbaservice_id=0;
         $service->save();

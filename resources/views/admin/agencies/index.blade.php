@@ -65,11 +65,11 @@
                     <a href="{{route('admin.mdas.show',$mda->id)}}" class="btn btn-info">View services</a> <a href="{{route('admin.mdas.edit',$mda->id)}}" class="btn btn-warning">
                       Edit Agency </a>
                     
-               <form action="" method="POST" class="d-inline"
-                onsubmit="return confirm('are you sure you want to delete centre?!')">
+               <form action="{{route("admin.mdas.destroy",$mda->id)}}" method="POST" class="d-inline"
+                onsubmit="return confirm('are you sure you want to delete Agency?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger disabled">Delete Agency</button>
+              <button class="btn btn-danger ">Delete Agency</button>
 
                </form>
               
