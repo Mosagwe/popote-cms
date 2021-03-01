@@ -73,10 +73,10 @@
                     <a href="{{route('admin.services.edit',$service->id)}}" class="btn btn-warning">
                       Edit service </a>                    
                <form action="{{route('admin.services.destroy',$service->id)}}" method="POST" class="d-inline"
-                onsubmit="return confirm('are you sure you want to delete centre?!')">
+                onsubmit="return confirm('are you sure you want to delete service?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger ">Delete Centre</button>
+              <button class="btn btn-danger ">Delete service</button>
 
                </form>
               
