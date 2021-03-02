@@ -82,7 +82,7 @@
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label >Agency logo</label>
-                            <input type="file" class="form-control" id="agency_logo" name="agency_logo" placeholder="choose Agency logo">
+                            <input type="file" class="form-control" id="mda_logo" name="mda_logo" placeholder="choose Agency logo">
                           </div>
                                        
                       </div>    

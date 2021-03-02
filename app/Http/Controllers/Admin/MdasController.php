@@ -101,6 +101,7 @@ return redirect()->route('admin.mdas.index');
     public function update(Request $request, $id)
     {
       
+$data=$request->all();
 
         if($request->hasFile('mda_logo')){
             $image_tmp = $request->file('mda_logo');
@@ -113,6 +114,8 @@ return redirect()->route('admin.mdas.index');
                 // Upload the Image
                 Image::make($image_tmp)->resize(300,400)->save($imagePath);
             }
+        }else if(!empty($data['current_mda_logo'])){
+            $imageName = $data['current_mda_logo'];
         }else{
             $imageName = "";
         }
