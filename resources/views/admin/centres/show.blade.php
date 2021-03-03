@@ -42,7 +42,8 @@
                   <thead>
                   <tr>
                     <th>#</th>                
-                    <th>Service Name</th>              
+                    <th>Service Name</th>
+                    <th>Status</th>              
                     <th>Action</th>                   
                   </tr>
                   </thead>
@@ -50,10 +51,18 @@
                       @foreach ($centre->services as $service)          
                   <tr>
                     <td>{{$service->id}}</td>                
-                    <td>{{$service->servicename}}</td>  
+                    <td>{{$service->servicename}}</td> 
+                    <td>@if ($service->status==1)
+                      <a class="updateServiceStatus"  id="service-{{$service->id}}" service_id={{$service->id}}
+                          href="javascript:void(0)">Active</a>
+                      @else 
+                      <a class="updateServiceStatus"   id="service-{{$service->id}}" service_id ="{{$service->id}}"
+                          href="javascript:void(0)">InActive</a>
+                      @endif
+                    </td> 
                 
                   <td class="text-centre">
-                    <a href="{{route('admin.centres.show',$centre->id)}}" class="btn btn-info">change status</a> <a href="{{route('admin.services.edit',$service->id)}}" class="btn btn-warning">
+       </a> <a href="{{route('admin.services.edit',$service->id)}}" class="btn btn-warning">
                       Edit service </a>
                       {{-- <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()"  class="btn btn-danger disabled">
                         Delete centre </a>

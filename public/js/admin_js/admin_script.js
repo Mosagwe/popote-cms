@@ -27,18 +27,18 @@ $(document).ready(function() {
     });
 
 
-    $(".updateSectionStatus").click(function () {
+    $(".updateServiceStatus").click(function () {
         var status = $(this).text();
-        var section_id = $(this).attr('section_id');
+        var service_id = $(this).attr('service_id');
         $.ajax({
             type: 'post',
-            url: '/admin/update-section-status',
-            data: { section_id: section_id, status: status },
+            url: '/admin/update-service-status',
+            data: { service_id: service_id, status: status },
             success: function (res) {
                 if (res['status'] == 0) {
-                   $("#section-"+section_id).html("<a class='updateSectionStatus' href='javascript:void(0)'>Inactive</a>")
+                   $("#service-"+service_id).html("<a class='updateSectionStatus' href='javascript:void(0)'>Inactive</a>")
                 } else if (res['status'] == 1) {
-                    $("#section-"+section_id).html("<a class='updateSectionStatus' href='javascript:void(0)'>Active</a>")
+                    $("#service-"+service_id).html("<a class='updateSectionStatus' href='javascript:void(0)'>Active</a>")
                 }
             }, error: function () {
                 alert('Error')
@@ -66,9 +66,5 @@ $(document).ready(function() {
         });
     })
 
-    $(". centredeletebtn").click(function (e) {
-        
-        e.preventDefault();
-        alert('hello kanyata');
-    })
+
 });

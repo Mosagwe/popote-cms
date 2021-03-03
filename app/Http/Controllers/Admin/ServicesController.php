@@ -135,5 +135,17 @@ Session::flash('success_message', 'service added successfully');
         Session::put('page','services');
         return view('admin.services.index')->with(compact('services'));
     }
-
+   
+    public function updateServiceStatus(Request $request){
+        if($request->ajax()){
+            $data= $request->all();
+            if($data['status']=='Active'){
+                $status=0;
+            }else{
+                $status=1;
+            }
+            Service::where('id',$data['service_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'service_id'=>$data['service_id']]);
+        }
+    }
 }

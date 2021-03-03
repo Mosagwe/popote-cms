@@ -51,7 +51,7 @@
                     <th>#</th>
                     <th>Code</th>
                     <th>Name</th>
-                    <th>Status</th>
+                
                     <th>Action</th>
                     
                   </tr>
@@ -62,14 +62,7 @@
                     <td>{{$centre->id}}</td>
                     <td>{{$centre->code}}</td> 
                     <td>{{$centre->name}}</td>  
-                    <td>@if ($centre->status==1)
-                      <a class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
-                          href="javascript:void(0)">Active</a>
-                      @else 
-                      <a class="updateCentreStatus" id="centre-{{$centre->id}}"  centre_id ="{{$centre->id}}" 
-                          href="javascript:void(0)">InActive</a>
-                      @endif
-                  </td>
+                    
                   <td class="text-centre">
                     <a href="{{route('admin.centres.show',$centre->id)}}" class="btn btn-info">View services</a> <a href="{{route('admin.centres.edit',$centre->id)}}" class="btn btn-warning">
                       Edit centre </a>

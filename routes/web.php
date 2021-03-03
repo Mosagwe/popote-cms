@@ -25,7 +25,7 @@ Route::resource('/admin/centres', \App\Http\Controllers\Admin\CentresController:
 Route::resource('/admin/services', \App\Http\Controllers\Admin\ServicesController::class, ['as'=>'admin']);
 Route::resource('/admin/uploads', \App\Http\Controllers\Admin\UploadsController::class, ['as'=>'admin']);
 Route::resource('/admin/mdas', \App\Http\Controllers\Admin\MdasController::class, ['as'=>'admin']);
-Route::post('admin/update-centre-status',[App\Http\Controllers\Admin\CentresController::class, 'updateCentreStatus']);
+Route::post('admin/update-service-status',[App\Http\Controllers\Admin\ServicesController::class, 'updateServiceStatus']);
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){
 

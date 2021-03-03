@@ -62,10 +62,10 @@
                     <td>{{ \Illuminate\Support\Str::limit($service->servicename,30)}}</td>  
                     <td>{{ \Illuminate\Support\Str::limit($service->details,50)}}</td>  
                     <td>@if ($service->status==1)
-                      <a class="updateServiceStatus"  
+                      <a class="updateServiceStatus"  id="service-{{$service->id}}" service_id={{$service->id}}
                           href="javascript:void(0)">Active</a>
                       @else 
-                      <a class="updateserviceStatus" 
+                      <a class="updateServiceStatus"   id="service-{{$service->id}}" service_id ="{{$service->id}}"
                           href="javascript:void(0)">InActive</a>
                       @endif
                   </td>
