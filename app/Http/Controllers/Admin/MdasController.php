@@ -49,7 +49,7 @@ class MdasController extends Controller
                 $extension = $image_tmp->getClientOriginalExtension();
                 // Generate New Image Name
                 $imageName = rand(111,99999).'.'.$extension;
-                $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+                $imagePath = 'images/mda_logos/'.$imageName;
                 // Upload the Image
                 Image::make($image_tmp)->resize(300,400)->save($imagePath);
             }
@@ -110,7 +110,7 @@ $data=$request->all();
                 $extension = $image_tmp->getClientOriginalExtension();
                 // Generate New Image Name
                 $imageName = rand(111,99999).'.'.$extension;
-                $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+                $imagePath = 'images/mda_logos/'.$imageName;
                 // Upload the Image
                 Image::make($image_tmp)->resize(300,400)->save($imagePath);
             }
