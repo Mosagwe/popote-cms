@@ -1,7 +1,14 @@
-<footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+<footer class="main-footer" style="background: #d3232e"  style="background-image: url(/assets/images/bg-pattern.png);">
+  <div class="mr-md-auto text-center text-md-left">
+    <div class="copyright">
+        &copy; Copyright <?php echo date('Y') ?> <strong><span>Huduma Kenya Secretariat</span></strong>. All Rights Reserved
+        <div class="credits float-right d-none d-sm-inline-block">
+       
+          Designed by <a href="https://www.hudumakenya.go.ke">Huduma Kenya</a>
+      </div>
     </div>
+ 
+</div>
   </footer>
+
+ 

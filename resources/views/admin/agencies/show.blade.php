@@ -32,7 +32,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Agency services</h3>
+                <h3 class="card-title" style="color: blue"><b>{{$mda->code}} Services</b></h3>
                 <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
                 style="max-width: 150px; float:right; display:inline-block;"> Add sertvice to Agency</a>
               </div>
