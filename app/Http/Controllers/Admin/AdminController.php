@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Auth;
 use Hash;
-use Illuminate\Http\Request;
 use Image;
 use Session;
+use App\Models\User;
 use \App\Models\Admin;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -70,6 +71,17 @@ Session::put('page','settings');
             echo "false";
         }
     }
+    
+    public function confirmPassword(Request $request)
+    {
+        $data = $request->all();
+        // echo "<pre>"; print_r($data); die;
+        if (Hash::check($data['confirm_password'],$data['password'])) {
+            echo "true";
+        } else {
+            echo "false";
+        }
+    }
 
     public function updateCurrentPassword(Request $request)
     {
@@ -109,7 +121,7 @@ Session::put('page','settings');
             $custommessage = [
                 'admin_name.required' => 'Name is Required',
                 'admin_name.alpha' => 'Valid Name is Required',
-                '  admin_mobile.required' => 'mobile phone is require',
+                'admin_mobile.required' => 'mobile phone is require',
                 'admin_mobile.numeric' => 'a valid phone number is required',
                 'admin_mobile.min' => 'phone number digits at least 10',
                 'admin_mobile.max' => ' phone number digits cannot exceed 10',
@@ -141,5 +153,39 @@ if($request->hasFile('admin_image')){
             Session::flash('success_message', 'Admin details updated successfully !');
         }
         return view('admin.admin_auth.update_admin_details')->with(compact('adminDetails'));
+    }
+
+    public function registerFormShow(){
+        return view ('admin.admin_auth.register');
+    }
+
+
+    public function registerAdmin(Request $request){
+if ($request->isMethod('post')){
+
+    $data= $request->all();
+
+  
+    //check if user exist
+    $userCount=Admin::where('email',$data['email'])->count();
+    if($userCount>0){
+        $message= 'email already exist';
+        session::flash('error_message',$message);
+ return redirect()->back();
+
+    }else{
+        //register user
+        
+        $admin= new Admin;
+        $admin->type='admin';
+        $admin->name=$data['name'];
+        $admin->mobile=$data['mobile'];
+        $admin->email=$data['email'];
+        $admin->password=bcrypt($data['password']);
+        $admin->save();
+        return redirect('admin/dashboard');
+    
+    }
+}
     }
 }

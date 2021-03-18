@@ -98,12 +98,17 @@
 <!-- overlayScrollbars -->
 <script src="{{url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{url('js/admin_js/adminlte.j') }}s"></script>
+<script src="{{url('js/admin_js/adminlte.js') }}s"></script>
+<script src="{{url('js/admin_js/adminlte.min.js') }}s"></script>
+<script src="{{ asset('js/admin_js/adminlte.min.js') }}s"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('js/admin_js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('js/admin_js/demo.js') }}"></script>
 <!-- custom js -->
 <script src="{{url('js/admin_js/admin_script.js')}}"></script>
+<!--jquery validations -->
+<script src="{{url('js/admin_js/jquery.js')}}" type="text/javascript"></script>
+<script src="{{url('js/admin_js/jquery.validate.js')}}" type="text/javascript" ></script>
 </body>
 </html>

@@ -24,13 +24,18 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
-     
+      @if(Auth::check())
       <li class="nav-item">
         <a class="nav-link"  href="{{url('/admin/logout')}}" >
           Logout
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link"  href="{{url('/admin/logout')}}" > My Account </a></li>
+  @else
+  <li class="nav-item">
+    <a class="nav-link"  href="{{url('/admin/logout')}}" > Logout </a></li>
+    @endif
     </ul>
   </nav>
   <!-- /.navbar -->

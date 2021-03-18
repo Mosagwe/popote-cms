@@ -4778,7 +4778,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  min-width: 0;
+  min-width: 50;
   word-wrap: break-word;
   background-color: #ffffff;
   background-clip: border-box;
@@ -20351,7 +20351,7 @@ html.maximized-card {
   background: #ffffff;
   border-top: 0;
   color: #666;
-  padding: 20px;
+  padding: 80px;
 }
 
 .login-card-body .input-group .form-control,

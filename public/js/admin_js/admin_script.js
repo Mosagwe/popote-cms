@@ -16,7 +16,7 @@ $(document).ready(function() {
                     );
                 } else if (res == "true") {
                     $(checkCurrentPwd).html(
-                        "<font color=green > Current password is incorrect</font>"
+                        "<font color=green > Current password is correct</font>"
                     );
                 }
             },
@@ -65,6 +65,76 @@ $(document).ready(function() {
             }
         });
     })
+// validate Register 
+    $("#registerForm").validate({
+        rules: {
+            name: "required",
+            type: "required",   
+            mobile: {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+                digits:true
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            confirm_password: {
+                required: true,
+                minlength: 5,
+                equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
+            },
+         
+        },
+        messages: {
+            name: "Please enter your firstname",
+        
+            mobile: {
+                required: "Please enter a username",
+                minlength: "Your username must consist of at least 2 characters"
+            },
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 6 characters long"
+            },
+            confirm_password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long",
+                equalTo: "Please enter the same password as above"
+            },
+            email: "Please enter a valid email address",
+        
+        }
+    });
 
+    $("#confirm_password").keyup(function() {
+        var current_pwd = $("#confirm_password").val();
+
+        $.ajax({
+            type: "post",
+            url: "/admin/confirm-password",
+            data: {confirm_password: confirm_password },
+            success: function(res) {
+
+                if (res == "false") {
+                    $(confirmpassword).html(
+                        "<font color=red> password matches </font>"
+                    );
+                } else if (res == "true") {
+                    $(confirmpassword).html(
+                        "<font color=green >passwords </font>"
+                    );
+                }
+            },
+            error: function() {
+                alert("Errors");
+            }
+        });
+    });
 
 });
