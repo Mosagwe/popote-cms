@@ -42,6 +42,19 @@ class MdasController extends Controller
     public function store(Request $request, Mda $mda)
     {
         
+        $rules = [
+            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'code' => 'required',
+            'mda_logo' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+        ];
+        $custommessage = [
+            'name.required' => 'Name is Required',
+            'name.alpha' => 'Valid Name is Required',
+            'mda_logo.required'=>'Agency logo is required',
+            // 'mda_logo.mimes' => 'image file required',
+        ];
+        $this->validate($request, $rules, $custommessage);
+        
         if($request->hasFile('mda_logo')){
             $image_tmp = $request->file('mda_logo');
             if($image_tmp->isValid()){

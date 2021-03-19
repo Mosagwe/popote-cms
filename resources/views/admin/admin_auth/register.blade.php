@@ -41,62 +41,42 @@
 
 
 
-      <form id="registerForm" name="registerForm" action="{{url('/admin/register') }}" method="post">@csrf
+      <form id="registerForm" name="registerForm" action="{{url('/admin/register') }}" method="post"
+      enctype="multipart/form-data">@csrf
         <span style="color: red" style="margin-top: 0%">{{$errors->first('name')}}</span>    
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right">Name</label>
-          <input name="name" id="name" type="text" class="form-control" placeholder="Name">
-          <div class="input-group-append">
-            <div class="input-group-text">
-            
-            </div>
-          </div>
+        <div class="form-group">
+          <label >name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
         </div>
        
         <span style="color: red" >{{$errors->first('mobile')}}</span>  
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right">Mobile</label>
-          <input name="mobile" id="mobile" type="text" class="form-control" placeholder="Mobile">
-          <div class="input-group-append">
-            <div class="input-group-text">
-         
-            </div>
-          </div>
-        </div>
-        <span style="color: red" >{{$errors->first('image')}}</span>  
         <div class="form-group">
-          <label >Agency logo</label>
-          <input type="file" class="form-control" id="admin_image" name="admin_image" >
+          <label >phone number</label>
+          <input type="text" class="form-control" id="mobile" name="mobile" required>
         </div>
+
+        <span style="color: red" >{{$errors->first('admin_image')}}</span>  
+        <div class="form-group">
+          <label >Admin Image</label>
+          <input type="file" class="form-control" id="admin_image" name="admin_image" required>
+        </div>
+
         <span style="color: red" style="margin-top: 0%">{{$errors->first('email')}}</span>  
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right">email</label>
-          <input name="email" id="email" type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
+        <div class="form-group">
+          <label >email</label>
+          <input type="email" class="form-control" id="email" name="email" required>    
         </div>
+
         <span style="color: red" style="margin-top: 0%">{{$errors->first('password')}}</span>  
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right">Password</label>
-          <input name="password" id="password" type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+        <div class="form-group">
+          <label >password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+         
         </div>
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right">re-password</label>
-          <input name="confirm_password" id="confirm_password" type="password" class="form-control" placeholder="Password">
-          <span id="confirmpassword"></span>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+
+        <div class="form-group ">
+          <label for="id_number">Confirm Password</label>
+          <input type="password"  class="form-control" id="confirm_password" name="confirm_password" >
         </div>
         <div class="row">
          

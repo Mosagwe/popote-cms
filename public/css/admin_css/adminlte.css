@@ -4806,7 +4806,8 @@ input[type="button"].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
-}
+};
+
 
 .card-title {
   margin-bottom: 0.75rem;
@@ -20363,6 +20364,7 @@ html.maximized-card {
 .register-card-body .input-group .form-control:focus {
   box-shadow: none;
 }
+
 
 .login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text,
 .register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {

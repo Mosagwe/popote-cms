@@ -35,8 +35,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
     Route::post('register',[App\Http\Controllers\Admin\AdminController::class, 'registerAdmin']);
     Route::post('login',[App\Http\Controllers\Admin\AdminController::class, 'loginUser']);
     Route::post('confirm-password',[App\Http\Controllers\Admin\AdminController::class, 'confirmPassword']);
-
     Route::match( ['get','post'],'/',[App\Http\Controllers\Admin\AdminController::class, 'login']);
+    
     Route::group(['middleware'=>['admin']] ,function(){
         Route::get('dashboard',[App\Http\Controllers\Admin\AdminController::class, 'dashboard']);
         Route::get('settings',[App\Http\Controllers\Admin\AdminController::class, 'settings']);
