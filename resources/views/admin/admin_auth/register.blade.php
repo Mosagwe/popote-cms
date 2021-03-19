@@ -64,14 +64,9 @@
           </div>
         </div>
         <span style="color: red" >{{$errors->first('image')}}</span>  
-        <div class="input-group mb-3">
-          <label for="id_number" class="col-md-4 col-form-label text-md-right"> Image</label>
-          <input name="image" id="image" type="file" class="form-control" placeholder="Mobile">
-          <div class="input-group-append">
-            <div class="input-group-text">
-            
-            </div>
-          </div>
+        <div class="form-group">
+          <label >Agency logo</label>
+          <input type="file" class="form-control" id="admin_image" name="admin_image" >
         </div>
         <span style="color: red" style="margin-top: 0%">{{$errors->first('email')}}</span>  
         <div class="input-group mb-3">

@@ -58,7 +58,7 @@ Session::put('page','settings');
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect('/admin');
+        return redirect('/');
     }
 
     public function chkCurrentPassword(Request $request)
@@ -137,7 +137,7 @@ if($request->hasFile('admin_image')){
         $extension = $image_tmp->getClientOriginalExtension();
         // Generate New Image Name
         $imageName = rand(111,99999).'.'.$extension;
-        $imagePath = 'images/admin_images/'.$imageName;
+        $imagePath = 'images/admin_images/admin_photos/'.$imageName;
         // Upload the Image
         Image::make($image_tmp)->resize(300,400)->save($imagePath);
     }
@@ -160,32 +160,72 @@ if($request->hasFile('admin_image')){
     }
 
 
-    public function registerAdmin(Request $request){
+    public function registerAdmin(Request $request ){
 if ($request->isMethod('post')){
 
-    $data= $request->all();
+    $rules = ['email' => 'required|email|max:255',
+    'password' => 'required',
+    'name'=>'required',
+    'type'=>'required',
+    'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
+    'image' => 'required|max:10000',
+ //    mimes:jpeg,jpg,png,gif|
+   
+];
 
-  
+$custommessage = [
+'email.required' => 'email is required',
+'email.email' => 'invalid email address',
+'type.required'=>' Admin type is required',
+'password.required' => 'password is required',
+'name.required'=>'admin name is required',
+'mobile.required' => 'phone number is required',
+'mobile.numeric' => 'valid phone number is required',
+'mobile.min' => 'phone number digits at least 10',
+'mobile.max' => ' phone number digits cannot exceed 10',
+'image.required'=>'admin image is required'
+];
+$this->validate($request, $rules, $custommessage);
+
+    if($request->hasFile('admin_image')){
+        $image_tmp = $request->file('admin_image');
+        if($image_tmp->isValid()){
+            // Get Image Extension
+            $extension = $image_tmp->getClientOriginalExtension();
+            // Generate New Image Name
+            $imageName = rand(111,99999).'.'.$extension;
+            $imagePath = 'images/admin_images/admin_photos/'.$imageName;
+            // Upload the Image
+            Image::make($image_tmp)->resize(300,400)->save($imagePath);
+        }
+    }else{
+        $imageName = "";
+    }
+
     //check if user exist
-    $userCount=Admin::where('email',$data['email'])->count();
+    $userCount=Admin::where('email',$request->email)->count();
     if($userCount>0){
         $message= 'email already exist';
         session::flash('error_message',$message);
  return redirect()->back();
 
-    }else{
-        //register user
-        
-        $admin= new Admin;
-        $admin->type='admin';
-        $admin->name=$data['name'];
-        $admin->mobile=$data['mobile'];
-        $admin->email=$data['email'];
-        $admin->password=bcrypt($data['password']);
-        $admin->save();
-        return redirect('admin/dashboard');
+    }  
     
-    }
+    $admin= new Admin;
+    $admin->name=$request->name;
+    $admin->mobile=$request->mobile;
+    $admin->type='admin';
+    $admin->image= $imageName;
+    $admin->email=$request->email;
+    $admin->password=$request->password;
+    $admin->save();
+
+ return redirect('admin/dashboard');
+
+  
 }
     }
+
+
+  
 }

@@ -125,6 +125,7 @@ $data=$request->all();
         $mda->code=$request->code;
         $mda->mda_logo=$imageName;
         $mda->save();
+        dd($mda);
         Session::flash('success_message','Agency edited successfully');
 return redirect()->route('admin.mdas.index');
 

@@ -19,7 +19,7 @@ class Admin
     {
 
         if(!Auth::guard('admin')->check()){
-            return redirect('/admin');
+            return redirect('/');
         }
         return $next($request);
     }

@@ -46,7 +46,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="categories" class="table table-bordered table-striped">
-                  <thead>
+                  <thead style="background-color: grey" >
                   <tr>
                     <th>#</th>
                     <th>Code</th>
