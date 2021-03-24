@@ -4,6 +4,7 @@
   @extends('layouts.admin_layout.admin_layout')
   @section('content')
         
+  
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="align-self: center" >
       <!-- Content Header (Page header) -->
@@ -66,8 +67,10 @@
                     <div class="row">
                       <div class="col-12 col-sm-6">
                         <div class="form-group">
-                          <label>Select Huduma Centre</label>
-                          <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;" required>
+                          <label>Select Huduma Centres</label>
+                          <select name="centre_id[]" id="centre_id" class="multi_select select2" multiple searchable="Search here.."
+                           style="width: 100%;" required  multiple= 'true'  >
+                           <option value="all">All</option>
                             @foreach ($centres as $centre)
                             <option value="{{$centre->id}}" >{{$centre->name}}</option>
                             @endforeach
@@ -88,6 +91,7 @@
                         <div class="form-group">
                           <label>select Agency</label>
                           <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;" required>
+                           
                             @foreach ($mdas as $mda)
                             <option value="{{$mda->id}}" >{{$mda->name}}</option>
                             @endforeach
@@ -125,6 +129,7 @@
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
   @endsection

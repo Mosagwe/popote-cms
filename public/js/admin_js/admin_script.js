@@ -61,73 +61,28 @@ $(document).ready(function() {
                     $("#centre-"+centre_id).html("<a class='updateCentreStatus' href='javascript:void(0)'>Active</a>")
                 }
             }, error: function () {
-                alert('error')
+                alert('Error')
             }
         });
     })
-// validate Register 
-    $("#registerForm").validate({
-        rules: {
-            name: "required",
-            type: "required",   
-            mobile: {
-                required: true,
-                minlength: 10,
-                maxlength: 10,
-                digits:true
-            },
-            password: {
-                required: true,
-                minlength: 6
-            },
-            confirm_password: {
-                required: true,
-                minlength: 5,
-                equalTo: "#password"
-            },
-            email: {
-                required: true,
-                email: true
-            },
-         
-        },
-        messages: {
-            name: "Please enter your firstname",
-        
-            mobile: {
-                required: "Please enter a username",
-                minlength: "Your username must consist of at least 2 characters"
-            },
-            password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 6 characters long"
-            },
-            confirm_password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long",
-                equalTo: "Please enter the same password as above"
-            },
-            email: "Please enter a valid email address",
-        
-        }
-    });
 
-    $("#confirm_password").keyup(function() {
-        var current_pwd = $("#confirm_password").val();
+
+    $("#confirm_pwdr").keyup(function() {
+        var confirm_pwd = $("#confirm_pwd").val();
 
         $.ajax({
             type: "post",
-            url: "/admin/confirm-password",
-            data: {confirm_password: confirm_password },
+            url: "/admin/confirm-passwor",
+            data: {confirm_pwd: confirm_pwd },
             success: function(res) {
 
                 if (res == "false") {
-                    $(confirmpassword).html(
+                    $(confirmPassword).html(
                         "<font color=red> password matches </font>"
                     );
                 } else if (res == "true") {
-                    $(confirmpassword).html(
-                        "<font color=green >passwords </font>"
+                    $(confirmPassword).html(
+                        "<font color=green >passwords didnt match </font>"
                     );
                 }
             },
@@ -136,5 +91,12 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#centre_id").select2({
+    placeholder:"Select Centres",
+    })
+
+       
+
 
 });

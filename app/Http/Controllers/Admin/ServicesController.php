@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 
 class ServicesController extends Controller
 {
+    private $centres;
     /**
      * Display a listing of the resource.
      *
@@ -57,16 +58,26 @@ class ServicesController extends Controller
         //     ];
         //     $this-> validate($request,$rules,$custommessage);
 
+       //dd($request->centre_id);
+       if(in_array('all',$request->centre_id)){
+          $centres=Centre::all()->pluck('id');
+                  
+       }
+       else{
+            $centres=Centre::find($request->centre_id)->pluck('id');
+       }
+
+
         $service->servicename= $request->servicename;
         $service->details= $request->details;
         $service->mda_id= $request->mda_id;
         $service->cost =$request->cost;
         $service->timeline=$request->timeline;
         $service->sbaservice_id=0;
-        $service->save();
-        $centre= Centre::find($request->centre_id);
+       $service->save();
+        $centre= $centres;
         $service->centres()->attach($centre);
-Session::flash('success_message', 'service added successfully');
+        Session::flash('success_message', 'service added successfully');
        return redirect('/admin/services');
     }
 

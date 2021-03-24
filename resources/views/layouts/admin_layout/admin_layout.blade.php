@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,17 +100,26 @@
 <!-- overlayScrollbars -->
 <script src="{{url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{url('js/admin_js/adminlte.js') }}s"></script>
-<script src="{{url('js/admin_js/adminlte.min.js') }}s"></script>
-<script src="{{ asset('js/admin_js/adminlte.min.js') }}s"></script>
+<script src="{{url('js/admin_js/adminlte.j') }}s"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('js/admin_js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('js/admin_js/demo.js') }}"></script>
 <!-- custom js -->
 <script src="{{url('js/admin_js/admin_script.js')}}"></script>
-<!--jquery validations -->
-<script src="{{url('js/admin_js/jquery.js')}}" type="text/javascript"></script>
-<script src="{{url('js/admin_js/jquery.validate.js')}}" type="text/javascript" ></script>
+<!-- sweet alert script -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+ 
+<!-- Include the plugin's CSS and JS: -->
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+
 </body>
 </html>
+
+
+

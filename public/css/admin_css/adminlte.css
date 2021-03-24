@@ -67,7 +67,6 @@ body {
   color: #212529;
   text-align: left;
   background-color: #ffffff;
-    background-image: url("../../images/background.jpeg");
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -4778,7 +4777,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  min-width: 50;
+  min-width: 0;
   word-wrap: break-word;
   background-color: #ffffff;
   background-clip: border-box;
@@ -4806,8 +4805,7 @@ input[type="button"].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
-};
-
+}
 
 .card-title {
   margin-bottom: 0.75rem;
@@ -20352,7 +20350,7 @@ html.maximized-card {
   background: #ffffff;
   border-top: 0;
   color: #666;
-  padding: 80px;
+  padding: 20px;
 }
 
 .login-card-body .input-group .form-control,
@@ -20364,7 +20362,6 @@ html.maximized-card {
 .register-card-body .input-group .form-control:focus {
   box-shadow: none;
 }
-
 
 .login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text,
 .register-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text {
@@ -31216,36 +31213,6 @@ a.text-muted:hover {
 
 [class*="accent-"] a.btn-light {
   color: #1F2D3D;
-}
-
-
-.section-title {
-  text-align: center;
-  padding-bottom: 30px;
-}
-
-.section-title h2 {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-.section-title h2::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #1bbd36;
-  bottom: 0;
-  left: calc(50% - 25px);
-}
-
-.section-title p {
-  margin-bottom: 0;
 }
 
 [class*="accent-"] a.btn-dark {

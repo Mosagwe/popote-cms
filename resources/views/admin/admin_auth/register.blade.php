@@ -46,46 +46,49 @@
         <span style="color: red" style="margin-top: 0%">{{$errors->first('name')}}</span>    
         <div class="form-group">
           <label >name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+          <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" required>
         </div>
        
         <span style="color: red" >{{$errors->first('mobile')}}</span>  
         <div class="form-group">
           <label >phone number</label>
-          <input type="text" class="form-control" id="mobile" name="mobile" required>
+          <input type="text" class="form-control" id="mobile" name="mobile" value="{{old('mobile')}}" required>
         </div>
 
         <span style="color: red" >{{$errors->first('admin_image')}}</span>  
         <div class="form-group">
           <label >Admin Image</label>
-          <input type="file" class="form-control" id="admin_image" name="admin_image" required>
+          <input type="file" class="form-control" id="admin_image" name="admin_image" value="{{old('admin_image')}}" required>
         </div>
 
         <span style="color: red" style="margin-top: 0%">{{$errors->first('email')}}</span>  
         <div class="form-group">
           <label >email</label>
-          <input type="email" class="form-control" id="email" name="email" required>    
+          <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" required>    
         </div>
 
         <span style="color: red" style="margin-top: 0%">{{$errors->first('password')}}</span>  
         <div class="form-group">
           <label >password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-         
+          <input type="password" class="form-control" id="password" name="password" required>        
         </div>
 
+        <span style="color: red" style="margin-top: 0%">{{$errors->first('confirm_password')}}</span>  
         <div class="form-group ">
           <label for="id_number">Confirm Password</label>
-          <input type="password"  class="form-control" id="confirm_password" name="confirm_password" >
+          <input type="password"  class="form-control" id="confirm_password" name="confirm_password" required>
         </div>
         <div class="row">
          
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-success btn-block">Register</button>
           </div>
+          {{-- <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block">Back to Login</button>
+          </div>--}}
           <!-- /.col -->
-        </div>
+        </div> 
       </form>
  
     </div>

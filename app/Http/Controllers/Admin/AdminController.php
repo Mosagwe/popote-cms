@@ -76,7 +76,7 @@ Session::put('page','settings');
     {
         $data = $request->all();
         // echo "<pre>"; print_r($data); die;
-        if (Hash::check($data['confirm_password'],$data['password'])) {
+        if (Hash::check($data['new_pwd'],$data['confirm_pwd'])) {
             echo "true";
         } else {
             echo "false";
@@ -169,6 +169,7 @@ if($request->hasFile('admin_image')){
     'admin_image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
     'email' => 'required|email|max:255',
     'password' => 'required',
+    'confirm_password'=>'required|same:password'
 
    
 ];
@@ -184,6 +185,8 @@ $custommessage = [
 'mobile.min' => 'phone number digits at least 10',
 'mobile.max' => ' phone number digits cannot exceed 10',
 'admin_image.required'=>'admin image is required',
+'confirm_password.required'=>'confirm password is required',
+'confirm_password.same'=>'passwords do not match'
 
 ];
 $this->validate($request, $rules, $custommessage);
@@ -220,7 +223,7 @@ if($request->hasFile('admin_image')){
       $admin->image= $imageName;
       $admin->email=$request->email;
       $admin->password=bcrypt($request->password);
-      dd($admin);
+    //   dd($admin);
       $admin->save();
   
    return redirect('admin/dashboard');

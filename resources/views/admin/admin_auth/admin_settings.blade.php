@@ -1,7 +1,11 @@
   
   @extends('layouts.admin_layout.admin_layout')
   @section('content')
-        
+        <style>
+          .content-wrapper{
+           background-image:url('/images/background.jpeg')
+          }
+        </style>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -82,6 +86,7 @@
                       <div class="form-group">
                         <label for="exampleInputPassword1">Confirm Password</label>
                         <input type="password" class="form-control" name="confirm_pwd" id="confirm_pwd" placeholder="Confirm Password" required="">
+                        <span id="confirmPassword"></span>
                       </div>
                   </div>
                   <!-- /.card-body -->
