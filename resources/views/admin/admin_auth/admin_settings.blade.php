@@ -1,11 +1,11 @@
   
   @extends('layouts.admin_layout.admin_layout')
   @section('content')
-        <style>
+        {{-- <style>
           .content-wrapper{
            background-image:url('/images/background.jpeg')
           }
-        </style>
+        </style> --}}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->

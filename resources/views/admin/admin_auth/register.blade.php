@@ -84,10 +84,10 @@
           <div class="col-4">
             <button type="submit" class="btn btn-success btn-block">Register</button>
           </div>
-          {{-- <div class="col-5">
-            <button type="submit" class="btn btn-primary btn-block">Back to Login</button>
-          </div>--}}
-          <!-- /.col -->
+         <div class="col-5 btn ">
+            <a href="{{url('/')}}">back to login</a>
+          </div>
+          <!-- /.col --> 
         </div> 
       </form>
  

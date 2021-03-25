@@ -46,19 +46,18 @@ class ServicesController extends Controller
      */
     public function store(Request $request, Service $service)
     {
-        // $rules=[
-        //     'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
-        //     'details'=>'required|regex:/^[\pL\s\-]+$/u',
-        //     ];
-        //     $custommessage=[
-        //     'servicename.requires'=>'Centre name is required',
-        //     'servicename.alpha'=>'valid centre name is required',
-        //     'details.required'=>'service details  is required',
-        //     'details.alpha'=>'A valid centre code is required'
-        //     ];
-        //     $this-> validate($request,$rules,$custommessage);
+        $rules=[
+            'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
+            'details'=>'required|regex:/^[\pL\s\-]+$/u',
+            ];
+            $custommessage=[
+            'servicename.requires'=>'Centre name is required',
+            'details.required'=>'service details  is required',
+            
+            ];
+            $this-> validate($request,$rules,$custommessage);
 
-       //dd($request->centre_id);
+    
        if(in_array('all',$request->centre_id)){
           $centres=Centre::all()->pluck('id');
                   

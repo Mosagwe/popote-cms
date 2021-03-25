@@ -49,7 +49,7 @@
                 </div>
                 @endif
 
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                 <div class="alert alert-danger" style="margin-top: 10px">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -57,7 +57,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
               
                 <!-- form start -->
                 <form role="form" method="post"  name="createservicesForm" action="{{route('admin.services.store')}}" 
@@ -76,10 +76,14 @@
                             @endforeach
                           </select>
                         </div>
+
+                        <span style="color: red" >{{$errors->first('servicename')}}</span> 
                         <div class="form-group">
                           <label >Services Name</label>
                           <input type="text" class="form-control" id="servicename" name="servicename" placeholder="Enter Service name" required>
                         </div> 
+
+                        <span style="color: red" >{{$errors->first('details')}}</span> 
                           <div class="form-group">
                             <label >Services Details</label>
                             <textarea class="form-control" name="details" id="details" rows="3" placeholder="Enter Service details" required></textarea>   
@@ -90,7 +94,7 @@
                       
                         <div class="form-group">
                           <label>select Agency</label>
-                          <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;" required>
+                          <select name="mda_id" name="mda_id" class="form-control select2" style="width: 100%;" required >
                            
                             @foreach ($mdas as $mda)
                             <option value="{{$mda->id}}" >{{$mda->name}}</option>

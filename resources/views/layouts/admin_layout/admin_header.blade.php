@@ -1,5 +1,5 @@
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:lightgreen;position:fixed;width:70%;" >
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -24,7 +24,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      @if(Auth::check())
+      @if(Auth::guard()->check())
       <li class="nav-item">
         <a class="nav-link"  href="{{url('/admin/logout')}}" >
           Logout
