@@ -28,13 +28,13 @@
       <section class="content">
         <div class="container-fluid">
        
-          <div class="row" >
+          {{-- <div class="row" >
             <div class="col-md-6">
           <div class=" split left">
             <div class="centred">
-              <img src="{{asset('images/hudumalogo.png') }}" alt="no Home image">
+              <img src="{{asset('images/hudumakenya.svg') }}" alt="no Home image" width="1000px" h>
               <br><br>
-              <p>welcome to the Huduma Kenya Popote_Ufe Admin Panel</p>
+              <h5>welcome to the Huduma Kenya Popote_Ufe Admin Panel</h5>
               
             </div>
           </div>
@@ -42,7 +42,7 @@
         <div class="col-md-6">
           <div class="split right">
             <div class="centred">
-              {{-- <img src="{{asset('images/hudumalogo.png') }}" alt="no Home image"> --}}
+             
               <h2 style="color: grey">Huduma Kenya Popote_Ufe Admin Panel</h2>
               <br>
               <p>Huduma Kenya Programme is a Government of Kenya initiative 
@@ -55,7 +55,15 @@
             </div>
           </div>
         </div>
+      </div> --}}
+
+      <div class="centred">
+        <img src="{{asset('images/hudumakenya.svg') }}" alt="no Home image" width="100%" background-size"cover">
+        <br><br>
+        <h5>welcome to the Huduma Kenya Popote_Ufe Admin Panel</h5>
+        
       </div>
+
          
         </div><!-- /.container-fluid -->
       </section>

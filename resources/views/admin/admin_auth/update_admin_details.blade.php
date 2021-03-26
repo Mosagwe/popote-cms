@@ -27,7 +27,7 @@
         <div class="container-fluid">
           <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
@@ -67,7 +67,8 @@
                 <form role="form" method="post"  name="updateAdminDetails" action="{{url('/admin/update-admin-details')}}" 
                 id="updateAdminDetails" enctype="multipart/form-data">@csrf
                   <div class="card-body">
-                   
+                    <div class="row">
+                      <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Admin Email</label>
                       <input  class="form-control" value="{{$adminDetails->email}}" readonly="">
@@ -81,6 +82,8 @@
                       <input  class="form-control" type="text" value="{{$adminDetails->name}}" placeholder="Enter Admi-name"
                        id="admin_name" name="admin_name">
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputPassword1">Phone number</label>
                       <input type="text" class="form-control" value="{{$adminDetails->mobile}}"
@@ -97,12 +100,14 @@
                             
                         @endif
                       </div>
+                    </div>
+                  </div>
                      
                   </div>
                   <!-- /.card-body -->
   
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </form>
               </div>

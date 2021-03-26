@@ -28,7 +28,7 @@
         <div class="container-fluid">
           <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
@@ -69,25 +69,9 @@
                 id="categoryForm" enctype="multipart/form-data">@csrf
                 @method('put')
                   <div class="card-body">
-                   
-                    {{-- <div class="form-group">
-                      <label>Select Huduma Centre</label>
-                      <select name="centre_id" id="centre_id" class="form-control select2" style="width: 100%;">
-                        @foreach ($centres as $centre)
-                        <option value="{{$centre->id}}" >{{$centre->name}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>select agency</label>
-                      <select name="mda_id" id="mda_id" class="form-control select2" style="width: 100%;">
-                        @foreach ($mdas as $mda)
-                        <option value="{{$mda->id}}" >{{$mda->name}}</option>
-                        @endforeach
-                      </select>
-                    </div> --}}
-
-                    <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                  <div class="form-group">
                       <label >Services Name</label>
                       <input type="text" class="form-control" value="{{$service->servicename}}" id="servicename" name="servicename" placeholder="Enter Service name">
                     </div>
@@ -95,6 +79,8 @@
                       <label >Services Details</label>
                       <textarea class="form-control" name="details"  id="details" rows="3"  placeholder="Enter Service details">{{$service->details}}</textarea>   
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label >Services cost</label>
                       <input type="text" class="form-control" value="{{$service->cost}}" id="cost" name="cost" placeholder="Enter Service cost">
@@ -102,7 +88,9 @@
                     <div class="form-group">
                       <label >Services timeline</label>
                       <input type="text" class="form-control" value="{{$service->timeline}}" id="timeline" name="timeline" placeholder="Enter Service timeline">
-                    </div>               
+                    </div>
+                  </div> 
+                  </div>              
                 </div>
                    
                      
@@ -110,7 +98,7 @@
                   <!-- /.card-body -->
   
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </form>
               </div>
