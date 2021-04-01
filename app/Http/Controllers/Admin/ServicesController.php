@@ -77,7 +77,7 @@ class ServicesController extends Controller
         $centre= $centres;
         $service->centres()->attach($centre);
         Session::flash('success_message', 'service added successfully');
-       return redirect('/admin/services');
+       return redirect()->route('admin.services.index');
     }
 
     /**
@@ -137,15 +137,12 @@ class ServicesController extends Controller
     public function destroy($id)
     {
         Service::destroy($id);
+        Session::flash('success_message','Service deleted successfully');
         return redirect()->route('admin.services.index');
     }
-    public function all()
-    {
-        $services=Service::all();
-        Session::put('page','services');
-        return view('admin.services.index')->with(compact('services'));
-    }
-   
+ 
+
+
     public function updateServiceStatus(Request $request){
         if($request->ajax()){
             $data= $request->all();
@@ -158,4 +155,6 @@ class ServicesController extends Controller
             return response()->json(['status'=>$status,'service_id'=>$data['service_id']]);
         }
     }
+
+    
 }

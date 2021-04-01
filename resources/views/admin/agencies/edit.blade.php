@@ -85,7 +85,7 @@
                   <label >AGENCY lOGO</label>
                   <input type="file" class="form-control" id="mda_logo" name="mda_logo" value="">
                   @if (!empty($mda->mda_logo))
-                  <a target="_blank" href="{{url('images/admin_images/admin_photos/', $mda->mda_logo)}}">{{$mda->mda_logo}}</a>
+                  <a target="_blank" href="{{url('images/mda_logos', $mda->mda_logo)}}">{{$mda->mda_logo}}</a>
                   <input type="hidden" name="current_mda_logo" 
                   value="{{$mda->mda_logo}}">
                   @else

@@ -27,6 +27,10 @@ Route::resource('/admin/services', \App\Http\Controllers\Admin\ServicesControlle
 Route::resource('/admin/uploads', \App\Http\Controllers\Admin\UploadsController::class, ['as'=>'admin']);
 Route::resource('/admin/mdas', \App\Http\Controllers\Admin\MdasController::class, ['as'=>'admin']);
 Route::post('admin/update-service-status',[App\Http\Controllers\Admin\ServicesController::class, 'updateServiceStatus']);
+Route::get('admin/create-agency-service/{id}',[App\Http\Controllers\Admin\MdasController::class, 'createAgencyService']);
+Route::post('admin/store-agency-service',[App\Http\Controllers\Admin\MdasController::class, 'storeAgencyService']);
+Route::get('admin/create-centre-service/{id}',[App\Http\Controllers\Admin\CentresController::class, 'createCentreService']);
+Route::post('admin/store-centre-service',[App\Http\Controllers\Admin\CentresController::class, 'storeCentreService']);
 });
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){

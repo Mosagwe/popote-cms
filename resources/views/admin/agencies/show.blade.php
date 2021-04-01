@@ -33,8 +33,8 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title" style="color: blue"><b>{{$mda->code}} Services</b></h3>
-                <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
-                style="max-width: 150px; float:right; display:inline-block;"> Add sertvice to Agency</a>
+                <a href="{{url('admin/create-agency-service',$mda->id)}}" class="btn btn-block btn-success " 
+                style="max-width: 150px; float:right; display:inline-block;"> Add service to {{$mda->code}}  </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -73,7 +73,7 @@
                 onsubmit="return confirm('are you sure you want to delete centre?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger disabled">Delete service</button>
+              <button class="btn btn-danger">Delete service</button>
 
                </form>
               

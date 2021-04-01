@@ -33,7 +33,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title" style="color: blue"><b>{{$centre->name}} Services</b></h3>
-                <a href="{{route('admin.services.create')}}" class="btn btn-block btn-success" 
+                <a href="{{url('admin/create-centre-service',$centre->id)}}" class="btn btn-block btn-success" 
                 style="max-width: 150px; float:right; display:inline-block;"> Add service to Centre</a>
               </div>
               <!-- /.card-header -->
@@ -70,10 +70,10 @@
                           @method('DELETE')
                         </form>  --}}
                <form action="" method="POST" class="d-inline"
-                onsubmit="return confirm('are you sure you want to delete centre?!')">
+                onsubmit="return confirm('are you sure you want to delete Service?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger disabled">Delete service</button>
+              <button class="btn btn-danger ">Delete service</button>
 
                </form>
               

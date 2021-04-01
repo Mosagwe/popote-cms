@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Image;
+use Session;
 use App\Models\Mda;
+use App\Models\Centre;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
-use Image;
 
 class MdasController extends Controller
 {
@@ -85,6 +87,8 @@ return redirect()->route('admin.mdas.index');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($id)
     {
         $mda=Mda::find($id);
@@ -155,4 +159,48 @@ return redirect()->route('admin.mdas.index');
         Mda::destroy($id);
         return redirect()->route('admin.mdas.index');
     }
+
+    public function createAgencyService($id){
+        $mda =Mda::find($id);
+        $centres= Centre::all();
+        return view('admin.agencies.createAgencyService')->with(compact('mda','centres'));
+    }
+    public function storeAgencyService(Request $request, Service $service){
+
+
+        $rules=[
+            'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
+            'details'=>'required|regex:/^[\pL\s\-]+$/u',
+            ];
+            $custommessage=[
+            'servicename.requires'=>'Centre name is required',
+            'details.required'=>'service details  is required',
+            
+            ];
+            $this-> validate($request,$rules,$custommessage);
+
+    
+       if(in_array('all',$request->centre_id)){
+          $centres=Centre::all()->pluck('id');
+                  
+       }
+       else{
+            $centres=Centre::find($request->centre_id)->pluck('id');
+       }
+
+
+        $service->servicename= $request->servicename;
+        $service->details= $request->details;
+        $service->mda_id= $request->mda_id;
+        $service->cost =$request->cost;
+        $service->timeline=$request->timeline;
+        $service->sbaservice_id=0;
+       $service->save();
+        $centre= $centres;
+        $service->centres()->attach($centre);
+        Session::flash('success_message', 'service added successfully');
+       return redirect()->route('admin.mdas.index');
+    }
+
+ 
 }

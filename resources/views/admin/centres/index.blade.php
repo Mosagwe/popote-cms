@@ -66,9 +66,11 @@
                   <td class="text-centre">
                     <a href="{{route('admin.centres.show',$centre->id)}}" class="btn btn-info">View services</a> <a href="{{route('admin.centres.edit',$centre->id)}}" class="btn btn-warning">
                       Edit centre </a>
-                      {{-- <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()"  class="btn btn-danger disabled">
+                      {{-- <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()"  class="btn btn-danger " record="centres" 
+                      recordid={{$centre->id}} >
                         Delete centre </a>
-                        <form action="{{route('admin.centres.destroy',$centre->id)}}"  method="POST">@csrf 
+                        <form action="{{route('admin.centres.destroy',$centre->id)}}"  method="POST"
+                          onsubmit="return confirm('are you sure you want to delete centre?!')">@csrf 
                           @method('DELETE')
                         </form>  --}}
                <form action="{{route('admin.centres.destroy',$centre->id)}}" method="POST" class="d-inline"
