@@ -79,7 +79,6 @@
           <input type="password"  class="form-control" id="confirm_password" name="confirm_password" required>
         </div>
         <div class="row">
-         
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-success btn-block">Register</button>

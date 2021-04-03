@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Route::get('forgot-password',[App\Http\Controllers\Admin\AdminController::class, 'forgotPassword']);
+// Route::post('forgot-password',[App\Http\Controllers\Admin\AdminController::class, 'Password']);
+Route::match(['get','post'],'forgot-password',[App\Http\Controllers\Admin\AdminController::class, 'forgotPassword']);
 Route::group(['middleware'=>['admin']],function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/admin/centres', \App\Http\Controllers\Admin\CentresController::class, ['as'=>'admin']);
@@ -31,6 +34,7 @@ Route::get('admin/create-agency-service/{id}',[App\Http\Controllers\Admin\MdasCo
 Route::post('admin/store-agency-service',[App\Http\Controllers\Admin\MdasController::class, 'storeAgencyService']);
 Route::get('admin/create-centre-service/{id}',[App\Http\Controllers\Admin\CentresController::class, 'createCentreService']);
 Route::post('admin/store-centre-service',[App\Http\Controllers\Admin\CentresController::class, 'storeCentreService']);
+
 });
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){

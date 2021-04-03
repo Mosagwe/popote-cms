@@ -37,17 +37,17 @@
         </button>
       </div>
       @endif
+    
+      
+      @if (Session::has('success_message'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+    {{Session::get('success_message')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
 
-
-      @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
 
       <form action="{{url('/admin') }}" method="post">@csrf
@@ -86,7 +86,7 @@
 
 
       <p class="mb-1">
-        <a href="#">I forgot my password</a>
+        <a href="{{url('/forgot-password')}}">I forgot my password</a>
       </p>
       <p class="mb-0">
         <a href="{{url('admin/registerform')}}" class="text-center">Register a new membership</a>

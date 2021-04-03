@@ -6,10 +6,12 @@ use Auth;
 use Hash;
 use Image;
 use Session;
+use Reminder;
 use App\Models\User;
 use \App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -49,6 +51,7 @@ Session::put('page','settings');
                 return redirect('admin/dashboard');
             } else {
                 Session::flash('error_message', 'invalid email or password');
+                Session::forget('success_message');
                 return redirect()->back();
             }
         }
@@ -227,10 +230,53 @@ if($request->hasFile('admin_image')){
       $admin->save();
   
    return redirect('admin/dashboard');
-  
 
 }
 
+public function forgotPassword(Request $request){
+if ($request->isMethod('post')){
+    $data= $request->all();
+    // dd($data);die;
+    // //  echo "<pre>"; print_r($data); die;
+    $emailCount = Admin::where('email',$data['email'])->count();
+    if($emailCount==0){
+$message ="Email doent exist!";
+Session::put('error_message',$message);
+Session::forget('success_message');
+return redirect()->back();
+    }
+  //generate randorm password
+$random_password= str_random(8);
 
+ //ecode password
+ $new_password = bcrypt($random_password);
+
+ // update password
+ Admin::where('email',$data['email'])->update(['password'=>$new_password]);
+
+ //get username
+$userName= Admin::select('name')->where('email',$data['email'])->first();
+
+//send forgot password email
+$emailAddress= $data['email'];
+$name =$userName->name;
+$messageData =[
+    'email'=>$emailAddress,
+    'name'=>$name,
+    'password'=>$random_password
+
+];
+Mail::send('admin.emails.forgot_password',$messageData, function($message)use($emailAddress){
+$message->to($emailAddress)->subject('New Password - UFE Admin panel');
+});
+//redirect to login
+$message ='Please check your Email for a new Password.';
+Session::put('success_message',$message);
+Session::forget('error_message');
+return redirect('/');
+}
+    return view('admin.admin_auth.forgot_password');
+}
   
+
 }
