@@ -1,4 +1,5 @@
-  <!-- Navbar -->
+
+<!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -26,12 +27,12 @@
     <ul class="navbar-nav ml-auto">
       @if(Auth::guard()->check())
       <li class="nav-item">
-        <a class="nav-link"  href="{{url('/admin/logout')}}" >
+        <a class="nav-link"  href="{{url('/logout')}}" >
           Logout
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="{{url('/admin/logout')}}" > My Account </a></li>
+        <a class="nav-link"  href="{{url('/home')}}" > My Account </a></li>
   @else
   <li class="nav-item">
     <a class="nav-link"  href="{{url('/admin/logout')}}" > Logout </a></li>

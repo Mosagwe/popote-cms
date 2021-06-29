@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Image;
-use Session;
-use App\Models\Mda;
+use App\Http\Controllers\Controller;
 use App\Models\Centre;
+use App\Models\Mda;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Image;
+use Session;
 
 class MdasController extends Controller
 {
@@ -20,8 +20,9 @@ class MdasController extends Controller
     public function index()
     {
         $mdas = Mda::get();
-     
-        Session::put('page','agencies');
+        dd($mdas);
+
+        Session::put('page', 'agencies');
         return view('admin.agencies.index')->with(compact('mdas'));
     }
 
@@ -43,7 +44,7 @@ class MdasController extends Controller
      */
     public function store(Request $request, Mda $mda)
     {
-        
+
         $rules = [
             'name' => 'required|regex:/^[\pL\s\-]+$/u',
             'code' => 'required',
@@ -52,32 +53,31 @@ class MdasController extends Controller
         $custommessage = [
             'name.required' => 'Name is Required',
             'name.alpha' => 'Valid Name is Required',
-            'mda_logo.required'=>'Agency logo is required',
+            'mda_logo.required' => 'Agency logo is required',
             // 'mda_logo.mimes' => 'image file required',
         ];
         $this->validate($request, $rules, $custommessage);
-        
-        if($request->hasFile('mda_logo')){
+
+        if ($request->hasFile('mda_logo')) {
             $image_tmp = $request->file('mda_logo');
-            if($image_tmp->isValid()){
+            if ($image_tmp->isValid()) {
                 // Get Image Extension
                 $extension = $image_tmp->getClientOriginalExtension();
                 // Generate New Image Name
-                $imageName = rand(111,99999).'.'.$extension;
-                $imagePath = 'images/mda_logos/'.$imageName;
+                $imageName = rand(111, 99999) . '.' . $extension;
+                $imagePath = 'images/mda_logos/' . $imageName;
                 // Upload the Image
-                Image::make($image_tmp)->resize(300,400)->save($imagePath);
+                Image::make($image_tmp)->resize(300, 400)->save($imagePath);
             }
-        }else{
+        } else {
             $imageName = "";
         }
-        $mda->name=$request->name;
-        $mda->code=$request->code;
-        $mda->mda_logo=$imageName;
+        $mda->name = $request->name;
+        $mda->code = $request->code;
+        $mda->mda_logo = $imageName;
         $mda->save();
-        Session::flash('success_message','Agency added successfully');
-return redirect()->route('admin.mdas.index');
-
+        Session::flash('success_message', 'Agency added successfully');
+        return redirect()->route('admin.mdas.index');
 
     }
 
@@ -88,11 +88,11 @@ return redirect()->route('admin.mdas.index');
      * @return \Illuminate\Http\Response
      */
 
-
     public function show($id)
     {
-        $mda=Mda::find($id);
-        return view('admin.agencies.show',compact('mda'));
+        $mda = Mda::find($id);
+
+        return view('admin.agencies.show', compact('mda'));
     }
 
     /**
@@ -103,8 +103,8 @@ return redirect()->route('admin.mdas.index');
      */
     public function edit($id)
     {
-        $mda= Mda::find($id);
-      
+        $mda = Mda::find($id);
+
         return view('admin.agencies.edit')->with(compact('mda'));
     }
 
@@ -117,34 +117,34 @@ return redirect()->route('admin.mdas.index');
      */
     public function update(Request $request, $id)
     {
-      
-$data=$request->all();
 
-        if($request->hasFile('mda_logo')){
+        $data = $request->all();
+
+        if ($request->hasFile('mda_logo')) {
             $image_tmp = $request->file('mda_logo');
-            if($image_tmp->isValid()){
+            if ($image_tmp->isValid()) {
                 // Get Image Extension
                 $extension = $image_tmp->getClientOriginalExtension();
                 // Generate New Image Name
-                $imageName = rand(111,99999).'.'.$extension;
-                $imagePath = 'images/mda_logos/'.$imageName;
+                $imageName = rand(111, 99999) . '.' . $extension;
+                $imagePath = 'images/mda_logos/' . $imageName;
                 // Upload the Image
-                Image::make($image_tmp)->resize(300,400)->save($imagePath);
+                Image::make($image_tmp)->resize(300, 400)->save($imagePath);
             }
-        }else if(!empty($data['current_mda_logo'])){
+        } else if (!empty($data['current_mda_logo'])) {
             $imageName = $data['current_mda_logo'];
-        }else{
+        } else {
             $imageName = "";
         }
-        $mda= Mda::find($id);
+        $mda = Mda::find($id);
 
-        $mda->name=$request->name;
-        $mda->code=$request->code;
-        $mda->mda_logo=$imageName;
+        $mda->name = $request->name;
+        $mda->code = $request->code;
+        $mda->mda_logo = $imageName;
         $mda->save();
         dd($mda);
-        Session::flash('success_message','Agency edited successfully');
-return redirect()->route('admin.mdas.index');
+        Session::flash('success_message', 'Agency edited successfully');
+        return redirect()->route('admin.mdas.index');
 
     }
 
@@ -160,47 +160,44 @@ return redirect()->route('admin.mdas.index');
         return redirect()->route('admin.mdas.index');
     }
 
-    public function createAgencyService($id){
-        $mda =Mda::find($id);
-        $centres= Centre::all();
-        return view('admin.agencies.createAgencyService')->with(compact('mda','centres'));
+    public function createAgencyService($id)
+    {
+        $mda = Mda::find($id);
+        $centres = Centre::all();
+        return view('admin.agencies.createAgencyService')->with(compact('mda', 'centres'));
     }
-    public function storeAgencyService(Request $request, Service $service){
+    public function storeAgencyService(Request $request, Service $service)
+    {
 
+        $rules = [
+            'servicename' => 'required|regex:/^[\pL\s\-]+$/u',
+            'details' => 'required|regex:/^[\pL\s\-]+$/u',
+        ];
+        $custommessage = [
+            'servicename.requires' => 'Centre name is required',
+            'details.required' => 'service details  is required',
 
-        $rules=[
-            'servicename'=>'required|regex:/^[\pL\s\-]+$/u',
-            'details'=>'required|regex:/^[\pL\s\-]+$/u',
-            ];
-            $custommessage=[
-            'servicename.requires'=>'Centre name is required',
-            'details.required'=>'service details  is required',
-            
-            ];
-            $this-> validate($request,$rules,$custommessage);
+        ];
+        $this->validate($request, $rules, $custommessage);
 
-    
-       if(in_array('all',$request->centre_id)){
-          $centres=Centre::all()->pluck('id');
-                  
-       }
-       else{
-            $centres=Centre::find($request->centre_id)->pluck('id');
-       }
+        if (in_array('all', $request->centre_id)) {
+            $centres = Centre::all()->pluck('id');
 
+        } else {
+            $centres = Centre::find($request->centre_id)->pluck('id');
+        }
 
-        $service->servicename= $request->servicename;
-        $service->details= $request->details;
-        $service->mda_id= $request->mda_id;
-        $service->cost =$request->cost;
-        $service->timeline=$request->timeline;
-        $service->sbaservice_id=0;
-       $service->save();
-        $centre= $centres;
+        $service->servicename = $request->servicename;
+        $service->details = $request->details;
+        $service->mda_id = $request->mda_id;
+        $service->cost = $request->cost;
+        $service->timeline = $request->timeline;
+        $service->sbaservice_id = 0;
+        $service->save();
+        $centre = $centres;
         $service->centres()->attach($centre);
         Session::flash('success_message', 'service added successfully');
-       return redirect()->route('admin.mdas.index');
+        return redirect()->route('admin.mdas.index');
     }
 
- 
 }

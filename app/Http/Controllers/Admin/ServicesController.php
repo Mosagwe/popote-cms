@@ -144,6 +144,7 @@ class ServicesController extends Controller
 
 
     public function updateServiceStatus(Request $request){
+    
         if($request->ajax()){
             $data= $request->all();
             if($data['status']=='Active'){

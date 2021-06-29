@@ -62,14 +62,14 @@
                     <td>{{$mda->code}}</td>
                   <td>{{\Illuminate\Support\Str::limit($mda->name,40)}}</td>              
                   <td class="text-centre">
-                    <a href="{{route('admin.mdas.show',$mda->id)}}" class="btn btn-info">View services</a> <a href="{{route('admin.mdas.edit',$mda->id)}}" class="btn btn-warning">
-                      Edit Agency </a>
+                    <a title="view sercices" href="{{route('admin.mdas.show',$mda->id)}}" class="btn btn-info">View services</a> <a title="edit agency" href="{{route('admin.mdas.edit',$mda->id)}}" class="btn btn-warning">
+                      <i class="fas fa-edit"></i>  </a>
                     
                <form action="{{route("admin.mdas.destroy",$mda->id)}}" method="POST" class="d-inline"
                 onsubmit="return confirm('are you sure you want to delete Agency?!')">
                  @method('delete')
                  @csrf
-              <button class="btn btn-danger ">Delete Agency</button>
+              <button title="delete agency" class="btn btn-danger "><i class="fas fa-trash"></i></button>
 
                </form>
               

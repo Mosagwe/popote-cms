@@ -119,7 +119,7 @@ Session::put('page','settings');
             $rules = [
                 'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'admin_mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:14',
-                'admin_image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+                'admin_image' => 'image|mimes:jpeg,jpg,png,gif|required|max:10000',
             ];
             $custommessage = [
                 'admin_name.required' => 'Name is Required',

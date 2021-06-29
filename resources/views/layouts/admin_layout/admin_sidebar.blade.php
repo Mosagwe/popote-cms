@@ -37,7 +37,7 @@
 
                <li class="nav-item">
                 <a href="{{url('/admin/dashboard')}}" class="nav-link {{$active}}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                     Dashboard
                   </p>
@@ -152,7 +152,7 @@
             <?php $active ='' ?>
           @endif
         <li class="nav-item">
-          <a href="{{route('admin.uploads.index')}}" class="nav-link {{$active}}">
+          <a href="{{route('admin.uploads.create')}}" class="nav-link {{$active}}">
             <i class="nav-icon fas fa-th"></i>
             <p>Upload</p>
           </a>

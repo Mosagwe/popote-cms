@@ -54,15 +54,7 @@
                 </div>
                 @endif
 
-                {{-- @if ($errors->any())
-                <div class="alert alert-danger" style="margin-top: 10px">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif --}}
+        
               
                 <!-- form start -->
                 <form role="form" method="post"  name="createcentreForm"  action="{{route('admin.centres.store')}}"
