@@ -71,6 +71,7 @@ $this-> validate($request,$rules,$custommessage);
     public function show($id)
     {
         $centre=Centre::findOrFail($id);
+        dd($centre->services);
         return view('admin.centres.show',compact('centre'));
     }
 
@@ -82,7 +83,9 @@ $this-> validate($request,$rules,$custommessage);
      */
     public function edit($id)
     {
+       
        $centre= Centre::find($id);
+      
        return view('admin.centres.edit')->with(compact('centre'));
     }
 
