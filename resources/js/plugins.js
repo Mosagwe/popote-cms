@@ -41,3 +41,17 @@ import moment from "moment";
 Vue.filter('myDate', function (date){
     return moment(date).format('MMMM Do YYYY');
 });
+
+// Toastr
+import VueToastr from 'vue-toastr';
+Vue.use(VueToastr, {
+    defaultTimeout: 3000,
+    defaultProgressBar: false,
+    defaultProgressBarValue: 0,
+    //defaultType: "error",
+    defaultPosition: "toast-top-right",
+    //defaultCloseOnHover: false,
+    //defaultStyle: { "background-color": "red" },
+    defaultClassNames: ["animated", "zoomInUp"]
+});
+

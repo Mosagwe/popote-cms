@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreInstitutionRequest;
 use App\Http\Resources\InstitutionResource;
 use App\Models\Scinstitution;
 use Illuminate\Http\Request;
@@ -35,9 +36,9 @@ class InstitutionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInstitutionRequest $request)
     {
-        //
+        return Scinstitution::create($request->validated());
     }
 
     /**
@@ -69,9 +70,10 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreInstitutionRequest $request, $id)
     {
-        //
+        $scinstitution=Scinstitution::findOrFail($id);
+        return $scinstitution->update($request->validated());
     }
 
     /**

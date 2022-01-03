@@ -2,7 +2,7 @@
 
     <div class="card card-success card-outline">
         <div class="card-header">
-            <h3 class="card-title">Service Charter Institutions 2</h3>
+            <h3 class="card-title">Service Charter Institutions</h3>
             <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item mr-1">
@@ -21,7 +21,7 @@
                     <th>Institution Name</th>
                     <th>Created At</th>
                     <th>Updated At</th>
-                    <th>Action</th>
+                    <th style="min-width: 100px;">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,9 +32,9 @@
                     <td>{{ institution.updated_at | myDate }}</td>
                     <td>
                         <a href="" class="btn btn-sm btn-warning" @click.prevent="editInstitution(institution)"><i
-                            class="fa fa-edit"></i>Edit</a>
+                            class="fa fa-edit"></i> </a>
                         <a href="" class="btn btn-sm btn-danger" @click.prevent="deleteInstitution(institution)"><i
-                            class="fa fa-trash"></i>Delete</a>
+                            class="fa fa-trash"></i> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -42,15 +42,15 @@
             <loading :loading="loading"></loading>
 
             <!--modal -->
-            <div class="modal fade" id="createDepartment" tabindex="-1" role="dialog"
-                 aria-labelledby="ceateDepartmentModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createInstitution" tabindex="-1" role="dialog"
+                 aria-labelledby="ceateInstitutionModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createDepartmentModalLabel" v-show="!editMode">Create
-                                Department</h5>
-                            <h5 class="modal-title" id="createDepartmentModalLabel" v-show="editMode">Update
-                                Department</h5>
+                            <h5 class="modal-title" id="createInstitutionModalLabel" v-show="!editMode">Create
+                                Institution</h5>
+                            <h5 class="modal-title" id="createInstitutionModalLabel" v-show="editMode">Update
+                                Institution</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -111,7 +111,7 @@ export default {
                 this.loading=false;
                 this.institutions = response.data.data;
             }).catch(() => {
-                this.$toastr.e('Cannot load departments', 'Error');
+                this.$toastr.e('Cannot load Institutions', 'Error');
             })
         },
         createMode() {
@@ -137,7 +137,7 @@ export default {
             this.form.put('/api/institutions/'+this.form.id).then((response)=>{
                 this.dis=true;
                 this.$toastr.s('Update is successful','Success');
-                Fire.$emit('loadInstitutionss');
+                Fire.$emit('loadInstitutions');
                 $('#createInstitution').modal('hide');
                 this.form.reset();
 
