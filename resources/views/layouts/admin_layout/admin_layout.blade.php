@@ -34,14 +34,14 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
 @include("layouts.admin_layout.admin_header")
 
 @include("layouts.admin_layout.admin_sidebar")
 
 @yield('content')
- 
+
   @include("layouts.admin_layout.admin_footer")
 
   <!-- Control Sidebar -->
@@ -116,7 +116,7 @@
 <!-- Include the plugin's CSS and JS: -->
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
-
+<script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 </html>

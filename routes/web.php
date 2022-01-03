@@ -43,7 +43,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
     Route::post('login',[App\Http\Controllers\Admin\AdminController::class, 'loginUser']);
     Route::post('confirm-password',[App\Http\Controllers\Admin\AdminController::class, 'confirmPassword']);
     Route::match( ['get','post'],'/',[App\Http\Controllers\Admin\AdminController::class, 'login']);
-    
+
     Route::group(['middleware'=>['admin']] ,function(){
         Route::get('dashboard',[App\Http\Controllers\Admin\AdminController::class, 'dashboard']);
         Route::get('settings',[App\Http\Controllers\Admin\AdminController::class, 'settings']);
@@ -51,7 +51,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::post('check-current-pwd',[App\Http\Controllers\Admin\AdminController::class, 'chkCurrentPassword']);
         Route::post('update-current-pwd',[App\Http\Controllers\Admin\AdminController::class, 'updateCurrentPassword']);
         Route::match(['get','post'],'update-admin-details',[App\Http\Controllers\Admin\AdminController::class, 'updateAdminDetails']);
-
-        
     });
+
+
 });
+
+Route::resource('admin/institutions', \App\Http\Controllers\Admin\ScinstitutionController::class);

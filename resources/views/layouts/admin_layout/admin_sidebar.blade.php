@@ -31,7 +31,7 @@
 
                @if (Session::get('page') =="dashboard")
                <?php $active ='active' ?>
-               @else 
+               @else
                <?php $active ='' ?>
             @endif
 
@@ -47,7 +47,7 @@
                           <!--Settings -->
               @if (Session::get('page') =="settings" || Session::get('page')=="update-admin-details")
               <?php $active ='active' ?>
-              @else 
+              @else
               <?php $active ='' ?>
            @endif
           <li class="nav-item has-treeview menu-open">
@@ -62,7 +62,7 @@
             <ul class="nav nav-treeview">
               @if (Session::get('page') =="settings")
               <?php $active ='active' ?>
-              @else 
+              @else
               <?php $active ='' ?>
            @endif
               <li class="nav-item">
@@ -73,7 +73,7 @@
               </li>
               @if (Session::get('page') =="update-admin-details")
               <?php $active ='active' ?>
-              @else 
+              @else
               <?php $active ='' ?>
            @endif
               <li class="nav-item">
@@ -82,18 +82,18 @@
                   <p>Update Admin Details</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
-         
+
                         <!--Operations -->
                         @if (Session::get('page') =="Centres" || Session::get('page')=="services"|| Session::get('page')=="agencies")
                         <?php $active ='active' ?>
-                        @else 
+                        @else
                         <?php $active ='' ?>
                      @endif
                     <li class="nav-item has-treeview menu-open">
-          
+
                       <a href="#" class="nav-link {{$active}}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -104,7 +104,7 @@
                       <ul class="nav nav-treeview">
                         @if (Session::get('page') =="Centres")
                         <?php $active ='active' ?>
-                        @else 
+                        @else
                         <?php $active ='' ?>
                       @endif
                        <!--Centers -->
@@ -115,10 +115,10 @@
                       </a>
                     </li>
                         <!--Services -->
-                        
+
                         @if (Session::get('page') =="services")
                         <?php $active ='active' ?>
-                        @else 
+                        @else
                         <?php $active ='' ?>
                       @endif
                     <li class="nav-item">
@@ -131,7 +131,7 @@
 
                   @if (Session::get('page') =="agencies")
                   <?php $active ='active' ?>
-                  @else 
+                  @else
                   <?php $active ='' ?>
                 @endif
                 <li class="nav-item">
@@ -140,7 +140,7 @@
                   <p>Agencies</p>
                 </a>
                 </li>
-                        
+
                       </ul>
                     </li>
 
@@ -148,19 +148,22 @@
 
             @if (Session::get('page') =="uploads")
             <?php $active ='active' ?>
-            @else 
+            @else
             <?php $active ='' ?>
           @endif
+            <li class="nav-item">
+                <a href="{{ route('institutions.index') }}" class="nav-link"> <i class="nav-icon fa fa-building"></i>Institutions</a>
+            </li>
         <li class="nav-item">
           <a href="{{route('admin.uploads.create')}}" class="nav-link {{$active}}">
             <i class="nav-icon fas fa-th"></i>
             <p>Upload</p>
           </a>
         </li>
-     
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </aside> 
+  </aside>
