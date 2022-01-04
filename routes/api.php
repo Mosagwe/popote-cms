@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\{
-    InstitutionController
+    InstitutionController,
+    ServiceCharterController,
 };
 
 /*
@@ -24,4 +25,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'institutions'=>InstitutionController::class,
+    'servicecharters'=>ServiceCharterController::class,
 ]);

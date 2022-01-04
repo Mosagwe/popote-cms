@@ -154,6 +154,9 @@
             <li class="nav-item">
                 <a href="{{ route('institutions.index') }}" class="nav-link"> <i class="nav-icon fa fa-building"></i>Institutions</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('servicecharter.index') }}" class="nav-link"> <i class="nav-icon fa fa-book"></i>Service Charters</a>
+            </li>
         <li class="nav-item">
           <a href="{{route('admin.uploads.create')}}" class="nav-link {{$active}}">
             <i class="nav-icon fas fa-th"></i>

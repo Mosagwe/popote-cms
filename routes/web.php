@@ -57,3 +57,4 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 });
 
 Route::resource('admin/institutions', \App\Http\Controllers\Admin\ScinstitutionController::class);
+Route::resource('admin/servicecharter',\App\Http\Controllers\Admin\ServiceCharterController::class);

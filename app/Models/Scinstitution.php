@@ -10,4 +10,9 @@ class Scinstitution extends Model
     use HasFactory;
 
     protected $guarded=[];
+
+    public function servicecharters()
+    {
+        return $this->hasMany(Servicecharter::class);
+    }
 }
